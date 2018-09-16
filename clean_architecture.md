@@ -1,6 +1,8 @@
 # Clean Architecture
 >A Craftsman's Guide to Software Structure and Design, First Edition
 
+By Robert C. Martin.
+
 ## I. Introduction
 When software is done right, it requires a fraction of the human resources to create and maintain. Changes are simple and rapid. Defects are few and far between. Effort is minimized, and functionality and flexibility are maximized.
 
@@ -14,18 +16,17 @@ Design seems to imply structures and decisions at a lower level.
 
 But it's not true. The low-level details and the high-level structure are all part of the same whole. 
 
-#### The Goal?
+#### The goal?
 The goal of software architecture is to minimize the human resources required to build and maintain the required system.
 
 #### Conclusion
 The best option is for the development organization to recognize and avoid its own overconfidence and to start taking the quality of its software architecture seriously.
 
 ### 2. A tale of two values
-
 Every software system provides two different values to the stakeholders: 
 
-* **Behavior**: developers write the code that causes the stakeholder’s machines to satisfy those requirements.
-* **Architecture**: software was intended to be a way to easily change the behavior of machines. When the stakeholders change their minds about a feature, that change should be simple and easy to make. The difficulty in making such a change should be proportional only to the scope of the change, and not to the shape of the change.
+* *Behavior*: developers write the code that causes the stakeholder’s machines to satisfy those requirements.
+* *Architecture*: software was intended to be a way to easily change the behavior of machines. When the stakeholders change their minds about a feature, that change should be simple and easy to make. The difficulty in making such a change should be proportional only to the scope of the change, and not to the shape of the change.
 
 #### The greater value
 If you give me a program that works perfectly but is impossible to change, then it won’t work when the requirements change, and I won’t be able to make it work. Therefore the program will become useless.
@@ -56,6 +57,5 @@ As a software developer, you are a stakeholder. You have a stake in the software
 If architecture comes last, then the system will become ever more costly to develop, and eventually change will become practically impossible for part or all of the system. If that is allowed to happen, it means the software development team did not fight hard enough for what they knew was necessary.
 
 ## II. Starting with the bricks: programming paradigms
-Paradigms are ways of programming, relatively unrelated to languages.
-
-A paradigm tells you which programming structures to use, and when to use them.
+* Paradigms are ways of programming, relatively unrelated to languages.
+* A paradigm tells you which programming structures to use, and when to use them.
