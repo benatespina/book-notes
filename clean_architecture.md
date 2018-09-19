@@ -68,3 +68,37 @@ If architecture comes last, then the system will become ever more costly to deve
 None of them adds new capabilities. Each imposes some kind of extra discipline that is negative in its intent. The paradigms tell us what not to do, more than they tell us what to do.
 
 They are align with the three big concerns of architecture: *function*, *separation of components*, and *data management*.
+
+### 4. Structured programming
+#### Proof
+* Certain uses of goto statements prevent modules from being decomposed recursively into smaller and smaller units.
+* Good uses of goto corresponded to simple selection and iteration control structures such as if/then/else and do/while. Modules that used only those kinds of control structures could be recursively subdivided into provable units.
+
+All programs can be constructed from just three structures: sequence, selection, and iteration.
+
+The very control structures that made a module provable were the same minimum set of control structures from which all programs can be built.
+
+#### A harmful proclamation
+Dijkstra wrote a letter "Go To Statement Considered Harmful". His point of view won.
+
+As computer languages evolved, the goto statement moved ever rearward, until it all but disappeared. Most modern languages do not have a goto statement.
+
+#### Functional decomposition
+Structured programming allows modules to be recursively decomposed into provable units, which in turn means that modules can be functionally decomposed. That is, you can take a large-scale problem statement and decompose it into high-level functions. Each of those functions can then be decomposed into lower-level functions, ad infinitum.
+
+#### No formal proofs
+Programmers at large never saw the benefits of working through the laborious process of formally proving each and every little function correct.
+
+#### Science to the rescue
+Science does not work by proving statements true, but rather by proving statements false.
+
+* Mathematics is the discipline of proving provable statements true.
+* Science is the discipline of proving provable statements false.
+
+#### Tests
+*Testing shows the presence, not the absence, of bugs.* In other words, a program can be proven incorrect by a test, but it cannot be proven correct.
+
+#### Conclusion
+* It is the ability to create falsifiable units of programming that makes structured programming valuable today.
+* Modern languages do not typically support unrestrained goto statements.
+* We still consider functional decomposition to be one of our best practices.
