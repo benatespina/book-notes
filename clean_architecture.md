@@ -59,3 +59,12 @@ If architecture comes last, then the system will become ever more costly to deve
 ## II. Starting with the bricks: programming paradigms
 * Paradigms are ways of programming, relatively unrelated to languages.
 * A paradigm tells you which programming structures to use, and when to use them.
+
+### 3. Paradigm overview
+* Structured programming imposes discipline on direct transfer of control.
+* Object-oriented programming imposes discipline on indirect transfer of control.
+* Functional programming imposes discipline upon assignment.
+
+None of them adds new capabilities. Each imposes some kind of extra discipline that is negative in its intent. The paradigms tell us what not to do, more than they tell us what to do.
+
+They are align with the three big concerns of architecture: *function*, *separation of components*, and *data management*.
