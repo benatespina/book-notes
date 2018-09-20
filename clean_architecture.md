@@ -102,3 +102,37 @@ Science does not work by proving statements true, but rather by proving statemen
 * It is the ability to create falsifiable units of programming that makes structured programming valuable today.
 * Modern languages do not typically support unrestrained goto statements.
 * We still consider functional decomposition to be one of our best practices.
+
+### 5. Object-oriented programming
+* The combination of data and function.
+* A way to model the real world.
+
+To explain the nature of OO we have: *encapsulation*, *inheritance*, and *polymorphism*.
+
+#### Encapsulation?
+It's a line that can be drawn around a cohesive set of data and functions. Outside of that line, the data is hidden and only some of the functions are known.
+
+* *C* programming language has a perfect encapsulation.
+    * Declare data structures and functions in header files.
+    * Then, implement them in implementation files.
+* *C++* broke the perfect encapsulation.
+    * It needed the member variables of a class to be declared in the header file of that class.
+    * It was partially repaired with visibility, but it was a hack for the compiler.
+* *Java* and *C#* simply abolished the header/implementation split altogether.
+
+So, it is difficult to accept that OO depends on strong encapsulation. Indeed, many OO languages have little or no enforced encapsulation.
+
+#### Inheritance?
+It's the redeclaration of a group of variables and functions within an enclosing scope.
+
+#### Polymorphism?
+It's an application of pointers to functions.
+
+OO languages may not have given us polymorphism, but they have made it much safer and much more convenient. It makes polymorphism trivial.
+
+OO imposes discipline on indirect transfer of control.
+
+#### Conclusion
+* OO is the ability, through the use of polymorphism, to gain absolute control over every source code dependency in the system.
+* It allows the architect to create a plugin architecture, in which modules that contain high-level policies are independent of modules that contain low-level details.
+* The low-level details are relegated to plugin modules that can be deployed and developed independently from the modules that contain high-level policies.
