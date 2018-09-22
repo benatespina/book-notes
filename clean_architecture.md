@@ -136,3 +136,33 @@ OO imposes discipline on indirect transfer of control.
 * OO is the ability, through the use of polymorphism, to gain absolute control over every source code dependency in the system.
 * It allows the architect to create a plugin architecture, in which modules that contain high-level policies are independent of modules that contain low-level details.
 * The low-level details are relegated to plugin modules that can be deployed and developed independently from the modules that contain high-level policies.
+
+### 6. Functional programming
+* The concepts predate programming itself.
+* This paradigm is strongly based on the l-calculus.
+
+#### Immutability and architecture
+* Race conditions, deadlock conditions, and concurrent update problems are due to mutable variables.
+* If you have infinite storage and infinite processor speed.
+* If not, immutability is also viable but, if certain compromises are made.
+
+#### Segregation of mutability
+The first compromise is to segregate the application, or the services within the application, into mutable and immutable components.
+
+* The immutable components perform their tasks in a purely functional way, without using any mutable variables.
+* The immutable components communicate with one or more other components that are not purely functional, and allow for the state of variables to be mutated.
+
+It's our responsibility to process as much as possible into the immutable components, and to drive as much code as possible out of those components that must allow mutation.
+
+#### Event sourcing
+This kind of architecture acts in a functional way. It does not storage the state.
+
+If we have enough storage and enough processor power, we can make our applications entirely immutable—and, therefore, entirely functional.
+
+#### Conclusion
+* Structured programming is discipline imposed upon direct transfer of control.
+* Object-oriented programming is discipline imposed upon indirect transfer of control.
+* Functional programming is discipline imposed upon variable assignment.
+* Software is not a rapidly advancing technology.
+* The tools have changed, and the hardware has changed, but the essence of software remains the same.
+* The stuff of computer programs is *composed of sequence*, *selection*, *iteration*, and *indirection*.
