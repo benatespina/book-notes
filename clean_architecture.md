@@ -198,3 +198,19 @@ The way to avoid this problem is to separate code that supports different actors
 The principle is about functions and classes, but,
 * At the level of components, it becomes the Common Closure Principle.
 * At the architectural level, it becomes the Axis of Change responsible for the creation of Architectural Boundaries.
+
+### 8. OCP: The open-closed principle
+A software artifact should be open for extension but closed for modification.
+
+#### A thought experiment
+Architects separate functionality based on how, why, and when it changes, and then organize that separated functionality into a hierarchy of components.
+
+Higher-level components in that hierarchy are protected from the changes made to lower-level components.
+
+#### Information hiding
+Transitive dependencies are a violation of the general principle that software entities should not depend on things they don’t directly use.
+
+#### Conclusion
+* It's one of the driving forces behind the architecture of systems.
+* The goal is to make the system easy to extend without incurring a high impact of change.
+    * It's accomplished by partitioning the system into components, and arranging those components into a dependency hierarchy that protects higher-level components from changes in lower-level components.
