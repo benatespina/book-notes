@@ -166,3 +166,35 @@ If we have enough storage and enough processor power, we can make our applicatio
 * Software is not a rapidly advancing technology.
 * The tools have changed, and the hardware has changed, but the essence of software remains the same.
 * The stuff of computer programs is *composed of sequence*, *selection*, *iteration*, and *indirection*.
+
+## III. Desing principles
+SOLID principles tell us how to arrange our functions and data structures into coupled grouping of functions and data, and how those groups should be interconnected.
+
+The goal of SOLID principals is the creation of software structures that:
+* Tolerate change,
+* Are easy to understand, and
+* Are the basis of components that can be used in many software systems.
+
+### 7. SRP: The single responsibility principle
+It's a principle that has been commonly misunderstood so, there are some definitions that they have been used over the years.
+
+* A module should have one, and only one, reason to change.
+* A module should be responsible to one, and only one, user or stakeholder.
+* A module should be responsible to one, and only one, actor.
+
+#### Symptom 1: accidental duplication
+The SRP says to separate the code that different actors depend on.
+
+#### Symptom 2: merges
+The way to avoid this problem is to separate code that supports different actors.
+
+#### Solutions
+* Move each function to the its own class.
+* You can also, use a Facade pattern to group the classes.
+* Each class contains a single public method but it can have all the private methods that it needs.
+    * Each of the classes that contain such a family of methods is a scope. Outside of that scope, no one knows that the private members of the family exist.
+
+#### Conclusion
+The principle is about functions and classes, but,
+* At the level of components, it becomes the Common Closure Principle.
+* At the architectural level, it becomes the Axis of Change responsible for the creation of Architectural Boundaries.
