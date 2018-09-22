@@ -236,7 +236,7 @@ This is the reason that dynamically typed languages create systems that are more
 It's harmful to depend on modules that contain more than you need.
 
 #### Conclusion
-Depending on something that carries baggage that you don’t need can cause you troubles that you didn’t expect.
+* Depending on something that carries baggage that you don’t need can cause you troubles that you didn’t expect.
 
 ### 11. DIP: The dependency inversion principle
 It tells us that the most flexible systems are those in which source code dependencies refer only to abstractions, not to concretions.
@@ -256,4 +256,4 @@ Interfaces are less volatile than implementations.
 * Never mention the name of anything concrete and volatile.
 
 #### Conclusion
-It's the most visible organizing principle in our architecture diagrams.
+* It's the most visible organizing principle in our architecture diagrams.
