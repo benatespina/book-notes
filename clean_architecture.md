@@ -214,3 +214,13 @@ Transitive dependencies are a violation of the general principle that software e
 * It's one of the driving forces behind the architecture of systems.
 * The goal is to make the system easy to extend without incurring a high impact of change.
     * It's accomplished by partitioning the system into components, and arranging those components into a dependency hierarchy that protects higher-level components from changes in lower-level components.
+
+### 9. LSP: The Liskov substitution principle
+What is wanted here is something like the following substitution property: If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.
+
+#### LSP and architecture
+It's applicable because there are users who depend on well-defined interfaces, and on the substitutability of the implementations of those interfaces.
+
+#### Conclusion
+* It can, and should, be extended to the level of architecture.
+* A simple violation of substitutability, can cause a system’s architecture to be polluted with a significant amount of extra mechanisms.
