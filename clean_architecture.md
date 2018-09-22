@@ -224,3 +224,16 @@ It's applicable because there are users who depend on well-defined interfaces, a
 #### Conclusion
 * It can, and should, be extended to the level of architecture.
 * A simple violation of substitutability, can cause a system’s architecture to be polluted with a significant amount of extra mechanisms.
+
+### 10. ISP: The interface segregation principle
+#### ISP and language
+* Statically typed languages, force programmers to create declarations. It's these declarations in source code that create the source code dependencies that force recompilation and redeployment.
+* In dynamically typed languages, such declarations don’t exist in source code. Instead, they are inferred at runtime. Thus there are no source code dependencies to force recompilation and redeployment.
+
+This is the reason that dynamically typed languages create systems that are more flexible and less tightly coupled than statically typed languages.
+
+#### ISP and architecture
+It's harmful to depend on modules that contain more than you need.
+
+#### Conclusion
+Depending on something that carries baggage that you don’t need can cause you troubles that you didn’t expect.
