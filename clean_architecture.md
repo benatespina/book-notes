@@ -237,3 +237,23 @@ It's harmful to depend on modules that contain more than you need.
 
 #### Conclusion
 Depending on something that carries baggage that you don’t need can cause you troubles that you didn’t expect.
+
+### 11. DIP: The dependency inversion principle
+It tells us that the most flexible systems are those in which source code dependencies refer only to abstractions, not to concretions.
+
+This means that the *use*, *import*, and *include* statements should refer only to source modules containing interfaces, abstract classes, or some other kind of abstract declaration.
+    * However, in a dynamically typed languages, it's a bit harder to define what a concrete module is. In should be any module in which the functions being called are implemented.
+
+Otherwise, there are some exceptions like the stable background of operating system and platform facilities because we know we can rely on them not to change.
+
+#### Stable abstractions
+Interfaces are less volatile than implementations.
+
+* Don’t refer to volatile concrete classes.
+    * It also puts severe constraints on the creation of objects and generally enforces the use of Abstract Factories.
+* Don’t derive from volatile concrete classes.
+* Don’t override concrete functions.
+* Never mention the name of anything concrete and volatile.
+
+#### Conclusion
+It's the most visible organizing principle in our architecture diagrams.
