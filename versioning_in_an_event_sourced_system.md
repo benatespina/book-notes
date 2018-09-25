@@ -35,10 +35,34 @@ By Gregory Young.
 Whether we talk about fraud or embezzlement, there are a vast number of existing systems where the concept of editing an event is an impossibility.
 
 ## Basic type based versioning
-### Getting started
 ### Define a version of an event
+* A new version of an event must be convertible from the old version of the event. If not, it is not a new version of the event but rather a new event.
+
+```c#
+InventoryItemDeactivated_v2 ConvertFrom(InventoryItemDeactivated_v1 e) {
+  return new InventoryItemDeactivated_v2(e.Id, "Before we cared about reason");
+}
+```
+> The event could be passed through some converters that move it forward in terms of version. The code will no longer see an *InventoryItemDeactivated_v1* event, and the handler in the domain object can be removed.
+
+* Unfortunately, using this style of serialization requires every node to actually have the schema of the event. If it does not have, it will not be able to even deserialize that event.
+
+* Move the schema resolution to a central service.
+    * They will request the schema on demand from a centralized service and apply it dynamically.
+    * It can introduce significant complexity, need for a framework, and a possible availability problem to the system.
+
 ### Double write
+* The new version of the producer write both the *_v1* and the *_v2* versions of the event when it writes. This is also known as Double Publish.
+* It must only handle the version of the event you understand and ignore all others.
+* The old version of the event will be deprecated. This gives subscribers time to catch up.
+* It's not unusual in a distributed systems.
+    * It works well in a stable situations of ES system.
+    * It fails when you need to replay a projection.
+
+* State hydrated from a stream to validate a command is a projection.
+
 ### But...
+* Using types to specify schema forces to all consumers update to understand the schema before a producer is.
 
 ## Weak schema
 ### Mapping
