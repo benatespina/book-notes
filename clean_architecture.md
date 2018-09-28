@@ -256,3 +256,33 @@ Interfaces are less volatile than implementations.
 
 #### Conclusion
 * It's the most visible organizing principle in our architecture diagrams.
+
+## IV. Component principles
+* SOLID principles tell us how to arrange the bricks into walls and rooms.
+* The component principles tell us how to arrange the rooms into buildings.
+
+### 12. Components
+* Components are the units of deployment.
+    * They are the smallest entities that can be deployed as part of a system.
+
+#### A brief history of components
+* In the early years of software development, programmers controlled the memory location and layout of their programs.
+* Devices were slow and memory was expensive.
+    * This took a long time—and the larger your function library, the longer the compiler took. Compiling a large program could take hours.
+
+#### Relocatability
+* The compiler was changed to output binary code that could be relocated in memory by a smart loader.
+* Now the programmer could tell the loader where to load the function library, and where to load the application.
+    * They load only those functions that they needed.
+* The loader could link the external references to the external definitions once it had determined where it had loaded those definitions.
+
+#### Linkers
+* It allowed programmers to divide their programs up onto separately compilable and loadable segments.
+* It worked well with small programs and libraries.
+* It was too slow to tolerate.
+* Function libraries were stored on slow devices such a magnetic tape. Even the disks, back then, were quite slow.
+* With *C* language, compiling each individual module was relatively fast, but compiling all the modules took a bit of time.
+* Finally, disks started to shrink and got significantly faster.
+    * Computer memory became cheap that much of the data on disk could be cached in RAM.
+#### Conclusion
+* These dynamically linked files, which can be plugged together at runtime, are the software components of our architectures
