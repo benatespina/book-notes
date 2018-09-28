@@ -242,7 +242,6 @@ It's harmful to depend on modules that contain more than you need.
 It tells us that the most flexible systems are those in which source code dependencies refer only to abstractions, not to concretions.
 
 This means that the *use*, *import*, and *include* statements should refer only to source modules containing interfaces, abstract classes, or some other kind of abstract declaration.
-    * However, in a dynamically typed languages, it's a bit harder to define what a concrete module is. In should be any module in which the functions being called are implemented.
 
 Otherwise, there are some exceptions like the stable background of operating system and platform facilities because we know we can rely on them not to change.
 
