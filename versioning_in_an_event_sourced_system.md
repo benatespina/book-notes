@@ -66,8 +66,30 @@ InventoryItemDeactivated_v2 ConvertFrom(InventoryItemDeactivated_v1 e) {
 
 ## Weak schema
 ### Mapping
+* It's used something like json or xml, combined with what is known as weak-schema or hybrid-schema, to serialize their messages. 
+
+* Exists on json and instance -> value from json
+* Exists on json but not on instance -> NOP
+* Exists on instance but not in json -> default value
+
+* When using mapping, there is no longer an addition of a new version of the event. However:
+    * Your are no longer allowed to rename something. You can deprecate it, but it is annoying operation as well.
+    * There will often be programmatic checks to ensure what you expect to be in the message after the mapping is in fact present. 
+
 ### Wrapper
+* Write/generate a wrapper over the serialized form.
+    * Tends to be more work.
+    * It requires some additional rules to be followed to deal with schema evolution.
+    * It has some significant advantages.
+
+* The class is not directly mapping to and from the json; it is instead wrapping it and providing typed access to it.
+* If you are enriching something, you can move it forward without understanding everything in the message.
+* If this json were mapped to a `Deactivated` event containing *Id*, *Reason*, and *AuthCode* and then serialized again, the *userId* would be lost in the mapping process.
+    * By using a wrapper, the *userId* can be preserved even if it is not understood.
+
 ### Overall considerations
+* For most systems, a simple human-readable format such as *JSON* or *XML* is fine for handling messages.
+* The wrapper may be a solution for a lot of performance scenarios or to pass data without understand.
 
 ## Negotiation
 ### Atom
