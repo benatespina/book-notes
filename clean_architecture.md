@@ -285,4 +285,37 @@ Interfaces are less volatile than implementations.
 * Finally, disks started to shrink and got significantly faster.
     * Computer memory became cheap that much of the data on disk could be cached in RAM.
 #### Conclusion
-* These dynamically linked files, which can be plugged together at runtime, are the software components of our architectures
+* These dynamically linked files, which can be plugged together at runtime, are the software components of our architectures.
+
+### 13. Component cohesion
+#### REP: The reuse/release equivalence principle
+* The granule of reuse is the granule of release.
+* Developers need to know when new releases are coming, and which changes those new releases will bring.
+* It means that the classes and modules that are formed into a component must belong to a cohesive group.
+
+#### CCP: The common closure principle
+* Gather into components those classes that change for the same reasons and at the same times. Separate into different components those classes that change at different times and for different reasons.
+* It says that a component should not have multiple reasons to change.
+* If two classes are so tightly bound, either physically or conceptually, that they always change together, then they belong in the same component.
+    * This minimizes the workload related to releasing, revalidating, and redeploying the software.
+
+##### Similarity with SRP
+* Gather together those things that change at the same times and for the same reasons.
+* Separate those things that change at different times or for different reasons.
+
+#### CRP: The common reuse principle
+* Don’t force users of a component to depend on things they don’t need.
+* It tells us more about which classes shouldn’t be together than about which classes should be together.
+* It says that classes that are not tightly bound to each other should not be in the same component.
+
+##### Relation to ISP
+* Don’t depend on things you don’t need.
+
+#### The tension diagram for component cohesion
+* An architect who focuses on just the REP and CRP will find that too many components are impacted when simple changes are made.
+* An architect who focuses too strongly on the CCP and REP will cause too many unneeded releases to be generated.
+
+#### Conclusion
+* The three principles of component cohesion describe a much more complex variety of cohesion.
+* The balance is almost always dynamic.
+    * The partitioning that is appropriate today might not be appropriate next year.
