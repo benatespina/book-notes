@@ -319,3 +319,115 @@ Interfaces are less volatile than implementations.
 * The three principles of component cohesion describe a much more complex variety of cohesion.
 * The balance is almost always dynamic.
     * The partitioning that is appropriate today might not be appropriate next year.
+
+### 14. Component coupling
+#### The acyclic dependecies principle
+* Allow no cycles in the component dependency graph.
+* The “morning after syndrome” occurs in development environments where many developers are modifying the same source files.
+
+##### The weekly build
+* It's common in medium-size projects.
+* All the developers ignore each other for the first four days of the week.
+    * They all work on private copies of the code, and don’t worry about integrating their work on a collective basis.
+    * On Friday, they integrate all their changes and build the system.
+* As the project grows, it becomes less feasible to finish integrating the project on Friday.
+* Integration and testing become increasingly harder to do, and the team loses the benefit of rapid feedback.
+
+##### Eliminating dependency cycles
+* It splits the development environment into releasable components.
+* When developers get a component working, they release it for use by the other developers.
+* Each team can decide for itself when to adapt its own components to new releases of the components.
+    * Moreover, integration happens in small increments.
+* You must manage the dependency structure of the components.
+    * If there are cycles in the dependency structure, then the “morning after syndrome” cannot be avoided.
+
+##### The effect of a cycle in the component dependency graph
+* Cycles make it very difficult to isolate components.
+* Unit testing and releasing become very difficult and error prone.
+* Cycles in the dependency graph, it can be very difficult to work out the order in which you must build the components.
+
+##### Breaking the cycle
+* Apply the Dependency Inversion Principle (DIP).
+* Create a new component that parts that generate cycle depend on.
+
+##### The jitters
+* The second solution implies that the component structure is volatile in the presence of changing requirements.
+
+#### Top-down design
+* The component structure cannot be designed from the top down.
+* It is not one of the first things about the system that is designed, but rather evolves as the system grows and changes.
+* If we tried to design the component dependency structure before we designed any classes, we would likely fail rather badly.
+    * We would not know much about common closure,
+    * we would be unaware of any reusable elements, and
+    * we would almost certainly create components that produced dependency cycles.
+
+#### The stable dependencies principle
+* Some of these components are designed to be volatile. We expect them to change.
+* Any component that we expect to be volatile should not be depended on by a component that is difficult to change.
+    * Otherwise, the volatile component will also be difficult to change.
+
+##### Stability
+* A component with lots of incoming dependencies is very stable because it requires a great deal of work to reconcile any changes with all the dependent components.
+
+##### Stability metrics
+* It counts the number of dependencies that enter and leave that component.
+    * *Fan-in*: Incoming dependencies. This metric identifies the number of classes outside this component that depend on classes within the component.
+    * *Fan-out*: Outgoing dependencies. This metric identifies the number of classes inside this component that depend on classes outside the component.
+    * *I*: Instability: I = Fan-out / (Fan-in + Fan-out). This metric has the range [0, 1]. I = 0 indicates a maximally stable component. I = 1 indicates a maximally unstable component.
+
+##### Not all components should be stable
+* If all the components in a system were maximally stable, the system would be unchangeable.
+    * This is not a desirable situation.
+    * We want to design our component structure so that some components are unstable and some are stable.
+
+##### Abstract components
+* These abstract components are very stable and, therefore, are ideal targets for less stable components to depend on.
+
+#### The stable abstractions principle
+* A component should be as abstract as it is stable.
+
+##### Where do we put the high-level policy
+* If the high-level policies are placed into stable components, then the source code that represents those policies will be difficult to change.
+* Open-closed principle tells us that it is possible and desirable to create classes that are flexible enough to be extended without requiring modification.
+    * Abstract classes.
+
+##### Introducing the stable abstractions principle
+* It sets up a relationship between stability and abstractness.
+* If a component is to be stable, it should consist of interfaces and abstract classes so that it can be extended.
+    * Stable components that are extensible are flexible and do not overly constrain the architecture.
+
+##### Measuring abstraction
+* Its value is simply the ratio of interfaces and abstract classes in a component to the total number of classes in the component.
+    * *Nc*: The number of classes in the component.
+    * *Na*: The number of abstract classes and interfaces in the component.
+    * *A*: Abstractness. A = Na ÷ Nc.
+> 0: component **has no** abstract classes.</br>
+> 1: component **only has** abstract classes.
+
+##### The main sequence
+* The components that are maximally stable and abstract at the upper left at (0, 1).
+* The components that are maximally unstable and concrete are at the lower right at (1, 0).
+
+##### The zone of pain (0, 0)
+* This is a highly stable and concrete component.
+* It is rigid.
+    * It cannot be extended because it is not abstract, and it is very difficult to change because of its stability.
+* Examples: database schema and concrete utility library.
+
+##### The zone of uselessness (1, 1)
+* This location is undesirable because it is maximally abstract, yet has no dependents.
+* Such components are useless.
+* Example: abstract classes that no one ever implemented.
+
+##### Avoiding the zones of exclusion
+* The most desirable position for a component is at one of the two endpoints of the Main Sequence.
+
+##### Distance from the main sequence
+* We can create a metric that measures how far away a component is from the main sequence:</br>
+*D3*: Distance. `D = |A+I–1|`
+    * A value of 0 indicates that the component is directly on the Main Sequence.
+    * A value of 1 indicates that the component is as far away as possible from the main sequence.
+
+#### Conclusion
+* The dependency management metrics measure the conformance of a design to a pattern of dependency and abstraction that I think is a “good” pattern.
+* A metric is not a god; it is merely a measurement against an arbitrary standard.
