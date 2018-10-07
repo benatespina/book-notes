@@ -268,7 +268,7 @@ Interfaces are less volatile than implementations.
 #### A brief history of components
 * In the early years of software development, programmers controlled the memory location and layout of their programs.
 * Devices were slow and memory was expensive.
-    * This took a long time—and the larger your function library, the longer the compiler took. Compiling a large program could take hours.
+    * This took a long time, and the larger your function library, the longer the compiler took. Compiling a large program could take hours.
 
 #### Relocatability
 * The compiler was changed to output binary code that could be relocated in memory by a smart loader.
