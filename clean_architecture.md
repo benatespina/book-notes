@@ -431,3 +431,59 @@ Interfaces are less volatile than implementations.
 #### Conclusion
 * The dependency management metrics measure the conformance of a design to a pattern of dependency and abstraction that I think is a “good” pattern.
 * A metric is not a god; it is merely a measurement against an arbitrary standard.
+
+## V. Architecture
+
+### 15. What is architecture?
+* The architecture of a software system is the shape given to that system by those who build it.
+    * The form of that shape is in the division of that system into components, the arrangement of those components, and the ways in which those components communicate with each other.
+* The purpose of that shape is to facilitate the development, deployment, operation, and maintenance of the software system contained within it.
+* The strategy behind that facilitation is to leave as many options open as possible, for as long as possible.
+* There are many systems out there, with terrible architectures, that work just fine.
+    * Their troubles do not lie in their operation; rather, they occur in their deployment, maintenance, and ongoing development.
+* The primary purpose is to support the life cycle of the system.
+    * Good architecture makes the system easy to understand, easy to develop, easy to maintain, and easy to deploy.
+* The ultimate goal is to minimize the lifetime cost of the system and to maximize programmer productivity.
+
+#### Development
+* The architecture of a system should make that system easy to develop, for the team(s) who develop it.
+* A small team of 5 developers can quite effectively work together to develop a monolithic system without well-defined components or interfaces.
+* A system being developed by five different teams, each of which includes 7 developers, cannot make progress unless the system is divided into well-defined components with reliably stable interfaces.
+
+#### Deployment
+* A software system must be deployable.
+* The higher the cost of deployment, the less useful the system is.
+    * A goal of a software architecture, then, should be to make a system that can be easily deployed with a single action.
+
+#### Operation
+* The impact of architecture on system operation tends to be less dramatic than the impact of architecture on development, deployment, and maintenance.
+* Almost any operational difficulty can be resolved by throwing more hardware at the system without drastically impacting the software architecture.
+* A good software architecture communicates the operational needs of the system.
+
+#### Maintenance
+* It's a never-ending parade of new features and the inevitable trail of defects and corrections consume vast amounts of human resources.
+
+#### Keeping options open
+* All software systems can be decomposed into two major elements:
+    * Policy embodies all the business rules and procedures. It's where the true value of the system lives.
+    * Details are those things that are necessary to enable humans, other systems, and programmers to communicate with the policy, but that do not impact the behavior of the policy at all.
+        * They include IO devices, databases, web systems, servers, frameworks, communication protocols, and so forth.
+* The goal of the architect is to create a shape for the system that recognizes policy as the most essential element of the system while making the details irrelevant to that policy.
+* A good architect maximizes the number of decisions not made.
+ 
+#### Device independence
+* The operating systems of the day abstracted the IO devices into software functions that handled unit records that looked like cards.
+
+#### Junk mail
+* Our programs had a shape.
+* That shape disconnected policy from detail.
+* The policy was the formatting of the name and address records.
+* The detail was the device.
+* We deferred the decision about which device we would use.
+
+#### Physical addressing
+* If you change the high-level policy of the system to be agnostic about the physical structure of the disk, it'll allow us to decouple the decision about disk drive structure from the application.
+
+#### Conclusion
+* Good architects carefully separate details from policy, and then decouple the policy from the details so thoroughly that the policy has no knowledge of the details and does not depend on the details in any way.
+* Good architects design the policy so that decisions about the details can be delayed and deferred for as long as possible.
