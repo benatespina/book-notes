@@ -462,6 +462,7 @@ Interfaces are less volatile than implementations.
 
 #### Maintenance
 * It's a never-ending parade of new features and the inevitable trail of defects and corrections consume vast amounts of human resources.
+* *Spelunking* is the cost of digging through the existing software, trying to determine the best place and the best strategy to add a new feature or to repair a defect.
 
 #### Keeping options open
 * All software systems can be decomposed into two major elements:
@@ -487,3 +488,62 @@ Interfaces are less volatile than implementations.
 #### Conclusion
 * Good architects carefully separate details from policy, and then decouple the policy from the details so thoroughly that the policy has no knowledge of the details and does not depend on the details in any way.
 * Good architects design the policy so that decisions about the details can be delayed and deferred for as long as possible.
+
+### 16. Independence
+#### Use cases
+* The architecture of the system must support the intent of the system.
+* The architecture must support the use cases.
+* The most important thing a good architecture can do to support behavior is to clarify and expose that behavior so that the intent of the system is visible at the architectural level.
+
+#### Operation
+* If the system must handle 100,000 customers per second, it must support that kind of throughput and response time for each use case that demands it.
+* If the system must query big data cubes in milliseconds, then it must be structured to allow this kind of operation.
+
+#### Development
+* Any organization that designs a system will produce a design whose structure is a copy of the organization’s communication structure.
+* A system that must be developed by an organization with many teams and many concerns must have an architecture that facilitates independent actions by those teams, so that the teams do not interfere with each other during development.
+
+#### Deployment
+* The goal is *immediate deployment*.
+* It does not rely on dozens of little configuration scripts and property file tweaks.
+* It does not require manual creation of directories or files that must be arranged just so.
+* It helps the system to be immediately deployable after build.
+
+#### Leaving options open
+* It makes the system easy to change, in all the ways that it must change, by leaving options open.
+
+#### Decoupling layers
+* The system should be divided into decoupled horizontal layers—the UI, application-specific business rules, application-independent business rules, and the database.
+
+#### Decoupling use cases
+* Use cases are a very natural way to divide the system.
+* If you decouple the elements of the system that change for different reasons, then you can continue to add new use cases without interfering with old ones.
+* If you also group the UI and database in support of those use cases, so that each use case uses a different aspect of the UI and database, then adding new use cases will be unlikely to affect older ones.
+
+#### Decoupling mode
+* To run in separate servers, the separated components cannot depend on being together in the same address space of a processor.
+* They must be independent services, which communicate over a network of some kind.
+
+#### Independent develop-ability
+* When components are strongly decoupled, the interference between teams is mitigated.
+* So long as the layers and use cases are decoupled, the architecture of the system will support the organization of the teams, irrespective of whether they are organized as feature teams, component teams, layer teams, or some other variation.
+
+#### Independent deployability
+* Adding a new use case could be as simple as adding a few new jar files or services to the system while leaving the rest alone.
+
+#### Duplication
+* Duplication is generally a bad thing in software.
+* True duplication, in which every change to one instance necessitates the same change to every duplicate of that instance.
+* False or accidental duplication, if two apparently duplicated sections of code evolve along different paths if they change at different rates, and for different reasons then they are not true duplicates.
+    * Return to them in a few years, and you’ll find that they are very different from each other.
+
+#### Decoupling modes (again)
+* Source level. We can control the dependencies between source code modules so that changes to one module do not force changes or recompilation of others (e.g., Ruby Gems).
+* Deployment level. We can control the dependencies between deployable units such as jar files, DLLs, or shared libraries, so that changes to the source code in one module do not force others to be rebuilt and redeployed.
+* Service level. We can reduce the dependencies down to the level of data structures, and communicate solely through network packets such that every execution unit is entirely independent of source and binary changes to others (e.g., services or micro-services).
+* A good architecture will allow a system to be born as a monolith, deployed in a single file, but then to grow into a set of independently deployable units, and then all the way to independent services and/or micro-services. Later, as things change, it should allow for reversing that progression and sliding all the way back down into a monolith.
+* A good architecture protects the majority of the source code from those changes.
+
+#### Conclusion
+* Decoupling modes should not be always a trivial configuration option.
+* Decoupling mode of a system is one of those things that is likely to change with time, and a good architect foresees and appropriately facilitates those changes.
