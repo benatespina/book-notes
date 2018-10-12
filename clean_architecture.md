@@ -580,3 +580,38 @@ Interfaces are less volatile than implementations.
 * To draw boundary lines in a software architecture, you first partition the system into components.
 * This is an application of the *Dependency Inversion Principle* and the *Stable Abstractions Principle*.
     * Dependency arrows are arranged to point from lower-level details to higher-level abstractions.
+
+### 18. Boundary anatomy
+* The architecture of a system is defined by a set of software components and the boundaries that separate them.
+
+#### Boundary crossing
+* It's a function on one side of the boundary calling a function on the other side and passing along some data.
+
+#### The dreaded monolith
+* The fact that the boundaries are not visible during the deployment of a monolith does not mean that they are not present and meaningful.
+* The simplest possible boundary crossing is a function call from a low-level client to a higher-level service.
+* Communications between components in a monolith are very fast and inexpensive. They are typically just function calls. Consequently, communications across source-level decoupled boundaries can be very chatty.
+
+#### Deployment components
+* There may be a one-time hit for dynamic linking or runtime loading, but communications across these boundaries can still be very chatty.
+
+#### Threads
+* They're a way to organize the schedule and order of execution.
+* They may be wholly contained within a component, or spread across many components.
+
+#### Local processes
+* It's the stronger physical architectural boundary.
+* Local processes communicate with each other using sockets, or some other kind of operating system communications facility such as mailboxes or message queues.
+* Communication across local process boundaries involve operating system calls, data marshaling and decoding, and interprocess context switches, which are moderately expensive.
+
+#### Services
+* It's the strongest boundary.
+* It's a process, generally started from the command line or through an equivalent system call.
+* Services do not depend on their physical location.
+* Two communicating services may, or may not, operate in the same physical processor or multicore.
+* They assume that all communications take place over the network.
+* Communications across service boundaries are very slow compared to function calls.
+
+#### Conclusion
+* Most systems, other than monoliths, use more than one boundary strategy.
+* The boundaries in a system are a mixture of local chatty boundaries and boundaries that are more concerned with latency.
