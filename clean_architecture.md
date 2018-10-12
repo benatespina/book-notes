@@ -547,3 +547,36 @@ Interfaces are less volatile than implementations.
 #### Conclusion
 * Decoupling modes should not be always a trivial configuration option.
 * Decoupling mode of a system is one of those things that is likely to change with time, and a good architect foresees and appropriately facilitates those changes.
+
+### 17. Boundaries: drawing lines
+#### A couple of sad stories
+* Drawing the boundary lines helped us delay and defer decisions, and it ultimately saved us an enormous amount of time and headaches.
+
+#### Which lines do you draw, and when do you draw them?
+* For instance, the database is a tool that the business rules can use indirectly.
+* The business rules don’t need to know about the schema, or the query language, or any of the other details about the database.
+* All the business rules need to know is that there is a set of functions that can be used to fetch or save data.
+* This allows us to put the database behind an interface.
+* The database could be implemented with Oracle, or MySQL, or Couch, or Datomic, or even flat files.
+* The business rules don’t care at all.
+* The database decision can be deferred and you can focus on getting the business rules written and tested before you have to make the database decision.
+
+#### What about input and output?
+* The IO is irrelevant.
+* We often think about the behavior of the system in terms of the behavior of the IO.
+* GUI could be replaced with any other kind of interface and the BusinessRules would not care.
+
+#### Plugin architecture
+* The history of software development technology is the story of how to create plugins to establish a scalable and maintainable system architecture.
+* The core business rules are kept separate from those components that are either optional or that can be implemented in many different forms.
+
+#### The plugin argument
+* Boundaries are drawn where there is an axis of change.
+* The components on one side of the boundary change at different rates, and for different reasons, than the components on the other side of the boundary.
+    * GUIs change at different times and at different rates than business rules, so there should be a boundary between them.
+    * Business rules change at different times and for different reasons than dependency injection frameworks, so there should be a boundary between them.
+
+#### Conclusion
+* To draw boundary lines in a software architecture, you first partition the system into components.
+* This is an application of the *Dependency Inversion Principle* and the *Stable Abstractions Principle*.
+    * Dependency arrows are arranged to point from lower-level details to higher-level abstractions.
