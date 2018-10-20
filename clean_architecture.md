@@ -664,3 +664,32 @@ Interfaces are less volatile than implementations.
     * They are the family jewels.
 * The business rules should remain pristine, unsullied by baser concerns such as the user interface or database used.
 * The business rules should be the most independent and reusable code in the system.
+
+### 21. Screaming architecture
+#### The theme of an architecture
+* Architectures are not (or should not be) about frameworks.
+* Architectures should not be supplied by frameworks.
+* Frameworks are tools to be used, not architectures to be conformed to.
+* If your architecture is based on frameworks, then it cannot be based on your use cases.
+
+#### The purpose of an architecture
+* A good software architecture allows decisions about frameworks, databases, web servers, and other environmental issues and tools to be deferred and delayed.
+    * Frameworks are options to be left open.
+* A good architecture makes it easy to change your mind about those decisions, too.
+* A good architecture emphasizes the use cases and decouples them from peripheral concerns.
+
+#### But what about the web?
+* The web is not an architecture. It's a delivery mechanism (IO device).
+* Your system architecture should be as ignorant as possible about how it will be delivered.
+* You should be able to deliver it as a console app, or a web app, or a thick client app, or even a web service app, without undue complication or change to the fundamental architecture.
+
+#### Frameworks are tools, not ways of life
+* Framework authors often believe very deeply in their frameworks.
+    * They assume an all-encompassing, all-pervading, let-the-framework-do-everything position.
+* Develop a strategy that prevents the framework from taking over that architecture.
+
+#### Testable architectures
+* You are be able to unit-test all those use cases without any of the complications of frameworks.
+
+#### Conclusion
+* Your architecture should tell readers about the system, not about the frameworks you used in your system.
