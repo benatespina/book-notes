@@ -624,3 +624,43 @@ Interfaces are less volatile than implementations.
 * It's the distance from the inputs and outputs.
 * The farther a policy is from both the inputs and the outputs of the system, the higher its level.
 * The policies that manage input and output are the lowest-level policies in the system.
+
+### 20. Business rules
+* They are rules or procedures that make or save the business money.
+* The *Critical Business Rules* are critical to the business itself, and would exist even if there were no system to automate them.
+    * They usually require some data to work with.
+* The critical rules and critical data are inextricably bound, so they are a good candidate for an object: *Entity*.
+
+#### Entities
+* It is an object within our computer system that embodies a small set of critical business rules operating on *Critical Business Data*.
+* It contains the *Critical Business Data* or has very easy access to that data.
+* The interface of the *Entity* consists of the functions that implement the *Critical Business Rules* that operate on that data.
+* It stands alone as a representative of the business.
+    * It is unsullied with concerns about databases, user interfaces, or third-party frameworks.
+* It is pure business and nothing else.
+* It is not a class.
+    * You don’t need to use an object-oriented language to create an Entity.
+    * It binds the *Critical Business Data* and the *Critical Business Rules* together in a single and separate software module.
+
+#### Use cases
+* Some business rules make or save money for the business by defining and constraining the way that an automated system operates.
+* It is a description of the way that an automated system is used.
+* It specifies the input to be provided by the user, the output to be returned to the user, and the processing steps involved in producing that output.
+* It describes application-specific business rules as opposed to the *Critical Business Rules* within the *Entities*.
+* It is impossible to tell whether the application is delivered on the web, or on a thick client, or on a console, or is a pure service.
+* DIP: high-level concepts, such as *Entities*, know nothing of lower-level concepts, such as use cases. Instead, the lower-level use cases know about the higher-level *Entities*.
+* Use cases depend on *Entities*; *Entities* do not depend on use cases.
+
+#### Request and response models
+* The use case class accepts simple request data structures for its input, and returns simple response data structures as its output. These data structures are not dependent on anything.
+* They do not derive from standard framework interfaces such as HttpRequest and HttpResponse.
+* *Entities* and request/response data structures have very differente purposes.
+    * They change for very different reasons, so tying them together in any way violates the Common Closure and SRP.
+
+#### Conclusion
+* Business rules are the reason a software system exists.
+    * They are the core functionality.
+    * They carry the code that makes, or saves, money.
+    * They are the family jewels.
+* The business rules should remain pristine, unsullied by baser concerns such as the user interface or database used.
+* The business rules should be the most independent and reusable code in the system.
