@@ -615,3 +615,12 @@ Interfaces are less volatile than implementations.
 #### Conclusion
 * Most systems, other than monoliths, use more than one boundary strategy.
 * The boundaries in a system are a mixture of local chatty boundaries and boundaries that are more concerned with latency.
+
+### 19. Policy and level
+* Software systems are statements of policy.
+* A computer program is a detailed description of the policy by which inputs are transformed into outputs.
+
+#### Level
+* It's the distance from the inputs and outputs.
+* The farther a policy is from both the inputs and the outputs of the system, the higher its level.
+* The policies that manage input and output are the lowest-level policies in the system.
