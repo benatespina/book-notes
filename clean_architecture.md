@@ -693,3 +693,63 @@ Interfaces are less volatile than implementations.
 
 #### Conclusion
 * Your architecture should tell readers about the system, not about the frameworks you used in your system.
+
+### 22. The clean architecture
+* For instance: hexagonal architecture, DCI (data context and iteration) and BCE.
+* They all have the same objective, which is the separation of concerns.
+* They all achieve this separation by dividing the software into layers.
+    * At least, one layer for business rules, and another layer for user and system interfaces.
+* They have following characteristics:
+    * Independent of frameworks.
+    * Testable.
+    * Independent of the UI.
+    * Independent of the database.
+    * Independent of any external agency.
+
+![clean architecture diagram](resources/clean_architecture_01.png "clean architecture diagram")
+
+#### The dependency rule
+* Source code dependencies must point only inward, toward higher-level policies.
+* Nothing in an inner circle can know anything at all about something in an outer circle.
+* Avoid anything of an outer circle that can impact in the inner circles.
+
+##### Entities
+* Entities encapsulate enterprise-wide Critical Business Rules.
+* They are the business objects of the application.
+
+##### Use cases
+* They contains application-specific business rules.
+* The orchestrate the flow of data to and from the entities, and direct those entities to use their Critical Business Rules to achieve the goals of the use case.
+* This layer changes do not affect to the entities, database, framework neither UI.
+
+##### Interface adapters
+* It's a set of adapters that convert data from the format most convenient for the use cases and entities, to the format most convenient for some external agency such as the database or the web.
+* This layer contains the MVC architecture of a GUI.
+    * The models are likely just data structures that are passed from the controllers to the use cases, and then back from the use cases to the presenters and views.
+* Data is converted from the form most convenient for entities and use cases, to the form most convenient for whatever persistence framework is being used
+* No code inward of this circle should know anything at all about the database.
+* Also in this layer is any other adapter necessary to convert data from some external form, such as an external service, to the internal form used by the use cases and entities.
+
+##### Frameworks and drivers
+* It is the outermost layer.
+* You don’t write much code in this layer, other than glue code that communicates to the next circle inward.
+
+##### Only four circles?
+* Source code dependencies always point inward.
+* As you move inward, the level of abstraction and policy increases.
+* The outermost circle consists of low-level concrete details.
+* As you move inward, the software grows more abstract and encapsulates higher-level policies.
+* The innermost circle is the most general and highest level.
+
+##### Crossing boundaries
+* It begins in the controller, moves through the use case, and then winds up executing in the presenter.
+
+##### Which data crosses the boundaries
+* They're simple data structures. For instance: basic structs or DTOs.
+* We don’t want to cheat and pass Entity objects or database rows.
+* We don’t want the data structures to have any kind of dependency that violates the Dependency Rule.
+* When we pass data across a boundary, it is always in the form that is most convenient for the inner circle.
+
+#### Conclusion
+* By separating the software into layers and conforming to the *Dependency Rule*, you will create a system that is intrinsically testable, with all the benefits that implies.
+* When any of the external parts of the system become obsolete, such as the database, or the web framework, you can replace those obsolete elements with a minimum of fuss.
