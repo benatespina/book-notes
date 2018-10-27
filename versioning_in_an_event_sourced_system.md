@@ -92,10 +92,39 @@ InventoryItemDeactivated_v2 ConvertFrom(InventoryItemDeactivated_v1 e) {
 * The wrapper may be a solution for a lot of performance scenarios or to pass data without understand.
 
 ## Negotiation
+* Some transports support bi-directional communications, which can be used to negotiate what format a message will arrive in.
+* The most common of such transports in use is HTTP.
+. 
 ### Atom
+* It's designed for blogs.
+* It's a common distribution method for event streams.
+* The URIs and the pages are both immutable.
+    * They can infinitely cached.
+* The client is making a request so it can include a header to explain the version that it can understand.
+* HTTP and Atom the most popular protocols thart support negotiation.
+
 ### Move negotiation forward
+* Some message transports and middleware support it.
+* A consumer register the content-types that there are interested.
+* The consumer sends all of the content types.
+* The publisher then converts a given message to the best match content type on its end before sending it to the consumer.
+* Not needing to negotiate per message when changes only happen rarely.
+* If using type-based schema, only the translation code needs to be updated.
+* Consumers can be updated as needed and can still get the old version of the message they understand.
+    * If a new field is to be added to an event, only the teams that need to use it need support for it.
+
 ### How to translate
+* The translations can happen either using type-based schema or weak schema.
+* In the type-based schema apart from the upcasting we need the downcasting.
+* It can be preferred converting from v1 to v9 directly as opposed to performing nine conversions.
+    * This approach is followed by weak schemas.
+* If your conversions becomes more difficult, it might be worth considering depreciating old versions of events.
+
 ### Use with structural data
+* Instead of converting the messages to different views, this service would instead replay all events up to a given event.
+* It provides the immutability of URIs so, it allows the caching.
+* The consumers will get a state per change, thereby not always getting the latest value, which can miss a change if these are multiple.
+* The service responsible for generating the varying structural views of the state at a given point just has a few small in-memory projections to build the varying structural views and return them.
 
 ## General versioning concerns
 ### Versioning of behaviour
