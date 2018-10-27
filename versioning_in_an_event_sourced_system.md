@@ -128,9 +128,74 @@ InventoryItemDeactivated_v2 ConvertFrom(InventoryItemDeactivated_v1 e) {
 
 ## General versioning concerns
 ### Versioning of behaviour
+* How do I version behaviour of my system as my domain logic changes?
+* If you find yourself putting branching logic or calculation logic in a projection, especially if it is based on time, you are probably missing logic in the creation of that event.
+
+This code very quickly spirals out of control. 
+```c#
+public void Apply(ItemSold e) {
+    if(e.Date < Convert.ToDateTime("1/1/2017")) {
+        _tax = e.Subtotal * .18;
+    } else {
+        _tax = e.Subtotal * .19;
+    }
+}
+```
+Better if we use:
+```c#
+public void SellItem(...) {
+    var tax = subtotal * .18;
+    Apply(new ItemSold(_id,....,tax));
+}
+```
+And then:
+```c#
+public void SellItem(...) {
+    var tax = subtotal * .19;
+    Apply(new ItemSold(_id,....,tax));
+}
+```
+
+### Exterior calls
+* The ideal work is to make call and store in the event the result.
+```c#
+public void SellItem(...) {
+    var customerScore = _externalService.GetCustomerScoreFor(customer);
+    Apply(new ItemSold(_id, ..., customerScore));
+}
+```
+* There are times the cost of storing may be high or due to legal restrictions the information is not allowed to be stored with the event.
+* The projection itself was replayable but from a user’s perspective the infomation was non-deterministic.
+    * Contractual obligation.
+* Another problem happens when projections start doing lookups to other projections.
+* To avoid that, you can:
+    * Share information between projections.
+    * Consider the entire read model a single projection and replay the read model as a whole.
+    * Place projections into Projection Groups for replay but this can easily be overlooked and should be looked at as a last resort.
+
+* If you find a projection making calls to external services or to other projections it will be a problem to replay later.
+
 ### Changing semantic meaning
+* Semantic meaning cannot change between versions of software.
+* There is no good way for a downstream consumer to understand a semantic meaning change. 
+
 ### Snapshots
+* Domain objects or state in a functional system can be rebuilt by replaying a stream of events.
+* When the stream of events gets large, say 1000 events it is beneficial to begin to save the state of a replay at a given point.
+* This allows for faster replays.
+* Versioning snapshots have the same problems that they have versioninig structural data.
+* The normal way of handling the problem is to rebuild the entire snapshot and to later delete the previously generated snapshot.
+* Before remove the previous snapshots, they will be depreceated.
+    * The software version dependent on the snapshots is removed first and once there is no longer anything using the snapshots, the snapshots can be deleted as well.
+* It is often a good idea to keep older snapshots around for a while if only to allow the ability to downgrade to an older version of software in case of bugs etc. 
+
 ### Avoid "and"
+* It's an anti-pattern that leads to temporal coupling and is likely to become a versioning issue in the future.
+* Event Sourced systems have two sets of Use Cases:
+    * Those you can tell the system to do, and
+    * those the system has said it has done.
+    * They do not always align.
+* Do not use the word “And” in an event name; use two events instead.
 
 ## Whoops, I did it again
 ### Accountants use pens
