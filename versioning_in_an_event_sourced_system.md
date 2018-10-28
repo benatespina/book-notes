@@ -199,10 +199,53 @@ public void SellItem(...) {
 
 ## Whoops, I did it again
 ### Accountants use pens
+* ES system works like a company.
+* For instance, if the accountant accidentally transfers a wrong quantity he doesn’t erase operation in the middle of their ledgers; instead of that, they will add new transactions to compensate for the one in error.
+
+Let’s imagine that the account makes a fat-finger mistake and accidentally transfers $10,000 instead of $1,000 from Account A to Account B.
+
+* *Partial reversal*: make a new transaction restoring the wrong quantity between accounts. 
+
+|ID | From      | To        | Amount  | Reason   |
+|:-:|:---------:|:---------:|:-------:|:--------:|
+|13 | Account A | Account B |  $10000 | NONE     |
+|27 | Account B | Account A |  $9000  | ERROR 13 |
+
+* *Full reversal*: make the previous transaction but in an inverse way, and then make the correct transaction.
+
+|ID | From      | To        | Amount  | Reason   |
+|:-:|:---------:|:---------:|:-------:|:--------:|
+|13 | Account A | Account B |  $10000 | NONE     |
+|27 | Account B | Account A |  $10000 | REV 13   |
+|29 | Account A | Account B |  $9000  | NONE     |
+
 ### Types of compensating actions
+* Implement the opposite use case that restore the state to the previous stage.
+* Create these events ad-hoc when/if they occur.
+    * Many Event Stores support the ability to write an event to a stream ad-hoc, say, from a json file with curl or from a small script.
+    * Projections do not yet understand this event. In such a case, you would need to update that consumer and then put in the ad-hoc correction.
+* Introduce a special type of event into your system known as a *Corrected event* or a *Cancelled event*.
+    * This event would contain a link to the original event that it was cancelling. 
+
 ### How do I find what needs fixing?
+* Bring up a one-off instance of the domain model that will iterate through all of the “possibly affected aggregates one by one, emitting the compensation as it finds domain objects that may be affected.
+* Every projection is ephemeral. There is nothing wrong with bringing one up solely to determine what things have been affected.
+* The state your domain model uses, is itself a projection.
+* Write a one-off projection, analyze your data, and determine what the scope of your change will be.
+    * Understand it, discuss its consequences, and finally, if you determine it’s still the right move, run the compensating actions.
+
 ### More complex example
+* The reading back to the 0 cross allows the system to not maintain intermediate snapshots of what was in the position at given points as it can recalculate it from that point.
+    * Unless the number of trades between 0 crosses is very high this is generally preferable.
+
 ### But I really screwed up
+* Event store implementations offer ways of deleting streams.
+* It's a safe operation, whereas deleting a single event or editing an event is not.
+* Deleting from the beginning of a stream is also a safe operation.
+* Sometimes we have data retention legislation that says we can only keep X information for T time.
+    * You can be handled with stream deletion, deleting the events specifically past a certain age. 
+    * You can keep two streams, one with private data and the other one with the public data.
+    * If you allow consumers to retain such information, you should also put a `RemovedPrivateData` event so that any consumers can also be notified that they should no longer retain the information.
 
 ## Copy and replace
 ### Simple copy-replace
