@@ -248,11 +248,93 @@ Let’s imagine that the account makes a fat-finger mistake and accidentally tra
     * If you allow consumers to retain such information, you should also put a `RemovedPrivateData` event so that any consumers can also be notified that they should no longer retain the information.
 
 ## Copy and replace
+* It's a pattern to:
+    * Merge two events into one. 
+    * Split one event into two.
+    * Update an event.
+ 
 ### Simple copy-replace
+* The general idea is to read the events out of the old stream and write them to a new one.
+* During this process you can:
+    * To get rid of events, they would just not be copied.
+    * To transform events from one version to another, they could be upcast.
+    * Any merging and splitting of events can be done easily.
+    * Any transformation can sit in the middle.
+* After the process, the original stream is then deleted.
+
+### In place copy-replace
+* Event Store must supports *truncate before* operation.
+* Instead of writing to a new stream, the events are appended back to the end of the same stream.
+
 ### Simple>
+* Copy-Replace is the nuclear-option of versioning.
+
+### Consumers
+* Include same identifier on the new event as the one you are copying.
+* You can’t assign the same identifier to both of the split events.
+* Copy-Replace is executed in an offline manner.
+    * An administrator stops incoming transactions, runs the Copy-Replace, re-runs all projections for read models, and brings the system back up.
+
 ### With a system live
+* If *Copy-Replace* is run under such circumstances, the old events are transformed and appended to the log as new events.
+    * This implies that things such as projections will see them as new events.
+* If in the time it took to process the command, the Copy-Replace occurred, and now the stream is gone.
+* There are some strategies but,
+    * Not all work in all scenarios.
+    * Not all scenarios are solvable.
+* Both the old and new versions of the software be able to understand both the new and old versions of the stream.
+* Instead of deleting the old stream after *Copy-Replace*, write an event at the end of the stream saying this stream has been migrated.
+* For auditing purposes, it can be worthwhile to put a pointer event pointing back to the original stream instead of deleting it.
+* The Copy-Replace will run asynchronously while the system is running.
+    * During the migration process, the producer will, when loading/writing to the stream, first check the last event in it.
+    * If it's a pointer event, it will follow that link and use the new stream.
+    * “If it is not, it will remember the version number of the event it read and use it as *ExpectedVersion*.
+* Some types of transformations may be occuring:
+    * Safe (Upgrade Version of Event, Add New Event).
+    * Dangerous (Split Event, Merge Events) but can be worked around.
+    * Very dangerous (Delete Event, Update event).
+
+* Let the read models go out of sync briefly and then rebuild/replace asynchronously.
+    * If this is done a short period of time after the problem arises, the damage can often be limited and/or turned into a customer service issue.
+    * If it's not, you have to write an *invalidated event* before the pointer event.
+* A projection will now first receive an Invalidated for the stream, to clean up required to invalidate any information it has previously received for this stream.
+* After, the projection will then receive the entire new stream and simply process it same as it would any other new data.
+* Copy-Replace can be a powerful tool.
+    * It allows for many things you couldn’t do otherwise, including updating an event.
+    * Its power has a real cost in terms of complexity. 
+
 ### Stream boundaries are wrong
+* One of the worst situations people eventually run into with an ES system is that they modeled their streams incorrectly.
+    * Because “the requirements of the system having changed over time.
+    * Because developers make mistakes in analysis.
+* For instance:
+    * The system manages the maintenance of trucks.
+    * Originally, Engine was modeled as part of a Truck.
+    * Later, as the system matures and brings in more use cases.
+    * Trucks and engines do not share a life cycle
+    * They should be in different streams.
+* Such as *Copy-Replace*, *Split-Stream* involves reading up from the first stream and writing down to two new ones.
+* Avoid all transformation and rely on idempotency.
+* If the two new streams will share some events.
+    * The same event gets written to both streams.
+    * This may cause problems with idempotency depending on the Event Store.
+* *Join-Stream* is the opposite of *Split-Stream* and is handled in the same way.
+
 ### Changing stream boundaries on a running system
+* *Split-Stream* and *Join-Stream* require both versions of software to support them.
+* If the current version does not support both models, you will need to do an intermediate release to ensure it does.
+* The strategy for *Split-Stream*:
+    * Try to read the last event from the single stream.
+    * If it is not a *StreamMovedTo* event, then continue to read the stream as normal.
+    * Otherwise, follow the appropriate link in the *StreamMovedTo*. 
+* The strategy for *Join-Stream*:
+    * Go to the original stream.
+    * Check the last event if it is a *StreamMovedTo*.
+    * Follow the link; otherwise, continue with that stream.
+* Use *ExpectedVersion* when writing back to the stream.
+    * Stream may get migrated while you are working on it.
+    * *ExpectedVersion* should be set to the last event read from the stream.
+    * If this step is forgotten, you may write an event to a stream after it is migrated and lose it in the process. 
 
 ## Cheating
 ### Two aggregates, one stream
