@@ -753,3 +753,41 @@ Interfaces are less volatile than implementations.
 #### Conclusion
 * By separating the software into layers and conforming to the *Dependency Rule*, you will create a system that is intrinsically testable, with all the benefits that implies.
 * When any of the external parts of the system become obsolete, such as the database, or the web framework, you can replace those obsolete elements with a minimum of fuss.
+
+### 23. Presenters and humble objects
+#### The humble object pattern
+* It's a design pattern.
+* It's a way to separate behaviors that are hard to test from behaviors that are easy to test.
+* For instance -> GUI:
+    * Presenter contains behaviour that it is easy to test.
+    * View is the *Humble Object* because its behaviour is hard to test.
+
+#### Presenters and views
+* View only moves data into the GUI but does not process that data.
+* The presenter is the testable object.
+* The presenter's job is to accept data from the application and format it for the view.
+
+#### Testing and architecture
+* Testability is an attribute of good architectures.
+* The separation of the behaviors into testable and non-testable parts often defines an architectural boundary.
+
+#### Database gateways
+* They exist between the use case interactors and the database.
+* They are polymorphic interfaces that contain methods for:
+    * create
+    * read
+    * update
+    * delete
+* We do not allow SQL in the use cases layer; instead, we use gateway interfaces that have appropriate methods.
+* Those gateways are implemented by classes in the database layer.
+* That implementation is the humble object.
+
+#### Data mappers
+* ORMs form another kind of Humble Object boundary between the gateway interfaces and the database.
+
+#### Service listeners
+* Applications must communicate with other services, or your application provides a set of services.
+* We'll find the *Humble Object* pattern creating a service boundary.
+
+#### Conclusion
+* We should be able to find *Humble Objects* in our architectures to increase testability.
