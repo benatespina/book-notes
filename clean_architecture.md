@@ -11,10 +11,10 @@ This is a bit utopian vision.
 We have seen coupled systems that every change, regardless of how trivial, takes weeks and involves huge risks. Also, we have seen bad designed code that it has huge negative effect on the morale of the team, the trust of the customers, and the patience of the managers.
 
 ### 1. What is design and architecture?
-Architecture is used at a high level. that is divorced from the lower-level 
+Architecture is used at a high level. that is divorced from the lower-level
 Design seems to imply structures and decisions at a lower level.
 
-But it's not true. The low-level details and the high-level structure are all part of the same whole. 
+But it's not true. The low-level details and the high-level structure are all part of the same whole.
 
 #### The goal?
 The goal of software architecture is to minimize the human resources required to build and maintain the required system.
@@ -23,7 +23,7 @@ The goal of software architecture is to minimize the human resources required to
 The best option is for the development organization to recognize and avoid its own overconfidence and to start taking the quality of its software architecture seriously.
 
 ### 2. A tale of two values
-Every software system provides two different values to the stakeholders: 
+Every software system provides two different values to the stakeholders:
 
 * *Behavior*: developers write the code that causes the stakeholder’s machines to satisfy those requirements.
 * *Architecture*: software was intended to be a way to easily change the behavior of machines. When the stakeholders change their minds about a feature, that change should be simple and easy to make. The difficulty in making such a change should be proportional only to the scope of the change, and not to the shape of the change.
@@ -471,7 +471,7 @@ Interfaces are less volatile than implementations.
         * They include IO devices, databases, web systems, servers, frameworks, communication protocols, and so forth.
 * The goal of the architect is to create a shape for the system that recognizes policy as the most essential element of the system while making the details irrelevant to that policy.
 * A good architect maximizes the number of decisions not made.
- 
+
 #### Device independence
 * The operating systems of the day abstracted the IO devices into software functions that handled unit records that looked like cards.
 
@@ -791,3 +791,27 @@ Interfaces are less volatile than implementations.
 
 #### Conclusion
 * We should be able to find *Humble Objects* in our architectures to increase testability.
+
+### 24. Partial boundaries
+* Anticipatory design -> violation of YAGNI: "You Aren’t Going to Need It."
+    * Architects, however, think, "Yeah, but I might."
+
+#### Skip the last step
+* Partial boundary is to do all the work necessary to create independently compilable and deployable components, and then simply keep them together in the same component.
+    * It requires the same amount of code and preparatory design work as a full boundary.
+    * It does not require the administration of multiple components.
+
+#### One-dimensional boundaries
+* The full-fledged architectural boundary uses reciprocal boundary interfaces to maintain isolation in both directions.
+    * This is expensive both in initial setup and in ongoing maintenance.
+
+#### Facades
+* It's another boundary pattern.
+* The boundary is simply defined by the Facade class.
+* Lists all the services as methods.
+* It deploys the service calls to classes that the client is not supposed to access.
+
+#### Conclusion
+* It is one of the functions of an architect to decide where an architectural boundary might one day exist, and whether to fully or partially implement that boundary.
+
+### 25. Layers and boundaries
