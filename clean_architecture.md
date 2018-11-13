@@ -815,3 +815,28 @@ Interfaces are less volatile than implementations.
 * It is one of the functions of an architect to decide where an architectural boundary might one day exist, and whether to fully or partially implement that boundary.
 
 ### 25. Layers and boundaries
+#### Hunt the wumpus
+* The game rules will communicate with the UI component using a language-independent API.
+* UI will translate the API into the appropriate human language.
+* Any number of UI components can reuse the same game rules.
+* The game rules do not know, nor do they care, which human language is being used.
+* We’ll create an API that the game rules can use to communicate with the data storage component.
+
+#### Clean architecture?
+* You can divide the flow of data into two streams.
+    * The first one is concerned with communicating with the user.
+    * The second one is concerned with data persistence.
+* Both streams meet at the top at GameRules, which is the ultimate processor of the data that goes through both streams.
+
+#### Crossing the streams
+* If the systems become more complex, the component structure may split into many such streams.
+
+#### Splitting the streams
+* In the systems become more complex, also, you can split the streams in their own microsersevice communicating via API.
+
+#### Conclusion
+* Architectural boundaries exist everywhere.
+* Be aware that such boundaries, when fully implemented, are expensive.
+* When such boundaries are ignored, they are very expensive to add in later, even in the presence of comprehensive test-suites and refactoring discipline.
+* You must weigh the costs and determine where the architectural boundaries lie, and which should be fully implemented, and which should be partially implemented, and which should be ignored.
+
