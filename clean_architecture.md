@@ -840,3 +840,12 @@ Interfaces are less volatile than implementations.
 * When such boundaries are ignored, they are very expensive to add in later, even in the presence of comprehensive test-suites and refactoring discipline.
 * You must weigh the costs and determine where the architectural boundaries lie, and which should be fully implemented, and which should be partially implemented, and which should be ignored.
 
+### 26. The main component
+#### The ultimate detail
+ * It is the initial entry point of the system.
+ * Its job is to create all the Factories, Strategies, and other global facilities, and then hand control over to the high-level abstract portions of the system.
+ * In that component, dependencies should be injected by a Dependency Injection framework.
+
+#### Conclusion
+* It sets up the initial conditions and configurations, gathers all the outside resources, and then hands control over to the high-level policy of the application.
+* It is possible to have many Main components, one for each configuration of your application.
