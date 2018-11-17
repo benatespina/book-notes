@@ -978,3 +978,46 @@ Interfaces are less volatile than implementations.
 * Letting all code become firmware is not good for your product’s long-term health.
 * Being able to test only in the target hardware is not good for your product’s long-term health.
 * A clean embedded architecture is good for your product’s long-term health.
+
+## VI. Details
+
+### 30. The database is a detail
+* The database is not the data model.
+* The database is piece of software.
+* The database is a utility that provides access to the data.
+* From the architecture’s point of view, that utility is irrelevant because it’s a low-level detail—a mechanism.
+* A good architect does not allow low-level mechanisms to pollute the system architecture.
+
+#### Relational databases
+* The relational model is elegant, disciplined, and robust.
+* It's just a technology. And that means it’s a detail.
+* There is nothing architecturally significant about arranging data into rows within tables.
+* The use cases of your application should neither know nor care about such matters.
+* Many data access frameworks allow database rows and tables to be passed around the system as objects.
+    * Allowing this is an architectural error.
+
+#### Why are database systems so prevalent?
+* The rotating magnetic disks are slow.
+* To mitigate the time delay imposed by disks, you need indexes, caches, and optimized query schemes; and you need some kind of regular means of representing the data so that these indexes, caches, and query schemes know what they are working with.
+    * File system
+        - They are document based.
+        - They don’t offer a lot of help when you’re searching the content of those documents.
+    * Relational database management system
+        - Database systems are content based.
+        - They provide a natural and convenient way to find records based on their content.
+
+#### What if there were no disk?
+* Even though the data is kept in a database or a file system, you read it into RAM and then you reorganize it, for your own convenience, into lists, sets, stacks, queues, trees, or whatever data structure meets your fancy.
+
+#### Details
+* It’s just a mechanism we use to move the data back and forth between the surface of the disk and RAM.
+
+#### But what about performance?
+* We need to get the data in and out of the data store quickly, but that’s a low-level concern.
+
+#### Conclusion
+* The organizational structure of data, the data model, is architecturally significant.
+* The technologies and systems that move data on and off a rotating magnetic surface are not.
+* Relational database systems that force the data to be organized into tables and accessed with SQL have much more to do with the latter than with the former.
+* The data is significant.
+* The database is a detail.
