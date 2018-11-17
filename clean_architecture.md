@@ -849,3 +849,42 @@ Interfaces are less volatile than implementations.
 #### Conclusion
 * It sets up the initial conditions and configurations, gathers all the outside resources, and then hands control over to the high-level policy of the application.
 * It is possible to have many Main components, one for each configuration of your application.
+
+### 27. Services: great and small
+#### Service architecture?
+* The architecture of a system is defined by boundaries that separate high-level policy from low-level detail and follow the Dependency Rule.
+* Services that simply separate application behaviors are little more than expensive function calls, and are not necessarily architecturally significant.
+* Services are just function calls across process and/or platform boundaries.
+
+#### Service benefits?
+##### The decoupling fallacy
+* Services are decoupled at the level of individual variables.
+    * They can still be coupled by shared resources within a processor, or on the network.
+    * They are strongly coupled by the data they share.
+
+##### The fallacy of independent development and deployment
+* Services can be owned and operated by a dedicated team.
+    * Large enterprise systems can be built from monoliths and component-based systems as well as service-based systems.
+    * Sometimes, they are coupled by data or behavior, the development, deployment, and operation must be coordinated.
+
+#### The kitty problem
+* Every software system must face the coupling problem, whether service oriented or not.
+
+#### Objects to the rescue
+* Careful consideration of the SOLID design principles would have prompted us to create a set of classes that could be polymorphically extended to handle new features.
+* Using dependency rule, template and strategic pattern you can decouple, and you can become the feature independently developable and deployable.
+
+#### Component-based services
+* Services do not need to be little monoliths.
+* Services can be designed using the SOLID principles, and given a component structure so that new components can be added to them without changing the existing components within the service.
+
+#### Cross-cutting concerns
+* The architectural boundaries do not fall between services.
+* Those boundaries run through the services, dividing them into components.
+
+#### Conclusion
+* The architecture of a system is defined by the boundaries drawn within that system, and by the dependencies that cross those boundaries.
+* That architecture is not defined by the physical mechanisms by which elements communicate and execute.
+* A service might be a single component, completely surrounded by an architectural boundary.
+* A service might be composed of several components separated by architectural boundaries.
+* In rare cases, clients and services may be so coupled as to have no architectural significance whatever.
