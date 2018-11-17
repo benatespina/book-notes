@@ -888,3 +888,40 @@ Interfaces are less volatile than implementations.
 * A service might be a single component, completely surrounded by an architectural boundary.
 * A service might be composed of several components separated by architectural boundaries.
 * In rare cases, clients and services may be so coupled as to have no architectural significance whatever.
+
+### 28. The test boundary
+* The tests are part of the system, and they participate in the architecture just like every other part of the system does.
+
+#### Tests as system components
+* Tests, by their very nature, follow the *Dependency Rule*.
+* They are very detailed and concrete.
+* They always depend inward toward the code being tested.
+* Nothing within the system depends on the tests, and the tests always depend inward on the components of the system.
+* Tests are the most isolated system component.
+
+#### Design for testability
+* They are not well integrated into the design of the system.
+* They are fragile and they make the system rigid and difficult to change.
+* The solution is that don't depend on volatile things.
+* Design the system, and the tests, so that business rules can be tested without using the GUI.
+
+#### The testing API
+* It's an API that the tests can use to verify all the business rules.
+* It has superpowers that allow the tests to avoid security constraints, bypass expensive resources (such as databases), and force the system into particular testable states.
+* The purpose is to decouple the tests from the application.
+* The goal is to decouple the structure of the tests from the structure of the application.
+
+##### Structural coupling
+* Test suite that has a test class for every production class, and a set of test methods for every production method.
+* Such a test suite is deeply coupled to the structure of the application.
+* The role of the testing API is to hide the structure of the application from the tests.
+* As time passes,
+    * the tests tend to become increasingly more concrete and specific.
+    * the production code tends to become increasingly more abstract and general.
+
+##### Security
+* The superpowers of the testing API could be dangerous if they were deployed in production systems.
+
+#### Conclusion
+* Tests are not outside the system.
+* Tests that are not designed as part of the system tend to be fragile and difficult to maintain.
