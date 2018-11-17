@@ -925,3 +925,56 @@ Interfaces are less volatile than implementations.
 #### Conclusion
 * Tests are not outside the system.
 * Tests that are not designed as part of the system tend to be fragile and difficult to maintain.
+
+### 29. Clean embedded architecture
+* Software is this thing that can have a long useful life, but firmware will become obsolete as hardware evolves.
+* Stop writing so much firmware and give your code a chance at a long useful life.
+
+#### App-titude test
+* Kent Beck describes three activities in building software:
+    * “First make it work.” You are out of business if it doesn’t work.
+    * “Then make it right.” Refactor the code so that you and others can understand it and evolve it as needs change or are better understood.
+    * “Then make it fast.” Refactor the code for “needed” performance.
+* If the application works but there is no way for this code to have a long useful life unless the product never needs to be moved to a different hardware environment.
+* We can say that it passes the App-titude test. But it does not have a clean embedded architecture.
+
+#### The target-hardware bottleneck
+* It's a one of the special problems of embedded applications.
+* The embedded developers have to deal with limited memory space, real-time constraints and deadlines, limited IO, unconventional user interfaces, and sensors and connections to the real world.
+* When embedded code is structured without applying clean architecture principles and practices, you will often face the scenario in which you can test your code only on the target.
+* A clean embedded architecture is a testable embedded architecture.
+
+#### Layers
+* Software - Firmware - Hardware
+* Hardware must be separated from the rest of the system
+    * Firmware - Hardware
+
+#### The hardware is a detail
+* The line between software and firmware is typically not so well defined as the line between code and hardware.
+* The name of the boundary between the software and the firmware is the hardware abstraction layer (HAL).
+
+#### Don't reveal hardware details to the user of the HAL
+* A clean embedded architecture’s software is testable off the target hardware.
+
+#### The processor is a detail
+* If you use a micro-controller, your firmware could isolate these low-level functions with some form of a processor abstraction layer (PAL).
+
+#### The operating system is a detail
+* To give your embedded code a good chance at a long life, you have to treat the operating system as a detail and protect against OS dependencies.
+* A clean embedded architecture isolates software from the operating system, through an operating system abstraction layer (OSAL).
+* The OSAL can help provide test points so that the valuable application code in the software layer can be tested off-target and off-OS.
+* A clean embedded architecture’s software is testable off the target operating system.
+* A successful OSAL provides that seam or set of substitution points that facilitate off-target testing.
+
+#### Programming to interfaces and substitutability
+* A clean embedded architecture is testable within the layers because modules interact through interfaces.
+* Each interface provides that seam or substitution point that facilitates off-target testing.
+
+#### DRY conditional compilation directives
+* One use of substitutability that is often overlooked relates to how embedded C and C++ programs handle different targets or operating systems.
+* If the HAL provides a set of interfaces, instead of using conditional compilation, we could use the linker or some form of runtime binding to connect the software to the hardware.
+
+#### Conclusion
+* Letting all code become firmware is not good for your product’s long-term health.
+* Being able to test only in the target hardware is not good for your product’s long-term health.
+* A clean embedded architecture is good for your product’s long-term health.
