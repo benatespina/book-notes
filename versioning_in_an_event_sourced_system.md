@@ -338,9 +338,50 @@ Let’s imagine that the account makes a fat-finger mistake and accidentally tra
 
 ## Cheating
 ### Two aggregates, one stream
+* There is nothing wrong with having two aggregates built off of the same stream.
+* The setting of *ExpectedVersion* and having two aggregates can lead to more optimistic concurrency problems at runtime.
+* It's a pattern that it does the same that *Split-Stream*.
+* It is just doing it dynamically at the application level as opposed to doing it at the storage level.
+
 ### One aggregate, two streams
+* It uses a join operation dynamically to combine two streams worth of events into a single stream that is then used for loading the aggregate.
+* Most frameworks are centered around stream per aggregate.
+* Instead of tracking *Event*, track something that wraps *Event* and also contains the stream that the *Event* applies to.
+* It is quite common that a system need to store information though some of it must be deleted after either a time period or a user request.
+    * Create two streams and have one aggregate running off of the join of the two streams.
+* It's less common than multiple aggregates on the same stream pattern.
+* It's useful when you need to do a *Join-Stream* at the storage level.
+
 ### Copy-transform
+* An Event Store is a distributed log.
+* Instead of migrating system to system in Copy-Transform you migrate version to version.
+* It's like *Copy-Replace* but on the entire Event Store not just on a stream.
+* You can rename an event, split one in two events, joins streams and so on in the transformation step like *Copy-Replace*.
+* The new system
+    * It has its own Event Store
+    * it has all of its own projections to read models hooked to it.
+    * As the data enters the Event Store it is then pushed out to the projections that update their read models.
+    * The Event Store may catch up before the projections. It is very important to monitor the projections so you know when they are caught up.
+    * Once they are caught up the system as a whole can do a *BigFlip*.
+* *BligFlip* tells to the Event Store of the old system that it should stop accepting writes, drain all the writes that happened before.
+    * It issues a special command to the old system at this point that will write a marker event.
+    * This marker event identifies when the new system has caught up with the old system and can be updated to point all traffic at the new system.
+* It removes most of the pain of trying to version a live running system by falling back to a *BigFlip*.
+* It's simpler that trying to upgrade a live running system.
+
 ### Versioning bankrupty
+* It's a specialized form of *Copy-Transform*.
+* *How do I migrate off of my old RDBMS system to an Event Sourced system?*
+    * To do a reverse engineering of the entire transaction history of given concepts from the old system, to recreate a full event history in the new system.
+    * Create an *Initialized* event as starting point of the *Aggregate*.
+* *How do I migrate off of my old ES system to a new ES system?*
+    * It's easy to reverse engineer your history since it is well your history.
+    * The *Initialized* event “allows you to truncate your history at a given point.
+* To execute the bankrupty,
+    * Run the migration then instead of deleting your old store and read models such as in Copy-Transform, keep them.
+    * Label them for that time period. They are now there for reporting purposes if needed.
+* It's difficult to analyze historical data outside of a single time period.
+* This pattern does not work well in continuous systems.
 
 ## Internal vs external models
 ### External integrations
