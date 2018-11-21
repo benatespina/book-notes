@@ -459,7 +459,48 @@ OrderPlaced: {
 
 ## Versioning process managers
 ### Process managers
+* They represent a business process that spans more than a single transaction.
+* They get the overall business process completed or they leave the system in a known termination state.
+
 ### Basic versioning
+* You never change a Process Manager. You make a new process.
+* The code of the Process Manager should be read-only.
+
 ### Upcasting state
+* As the process duration becomes longer versioning becomes more important.
+
+### Direct to storage
+* Upgrade the state associated with the Process Manager instance.
+* Go to the database that is backing the Process Managers and update the state in the data store.
+* It's a very dangerous operation.
+
+### New version migrates
+* Frameworks offer an explicit method of handling an upgrade.
+* When the new version is used for the first time, the framework will see that the old version used. The framework will then call into the *MigrateState* method passing the old state to the new version to allow for a migration before it passes the message into the new version of the Process Manager.
+* The system does not need to be shutdown during the migration process.
+
 ### Take over
+* Migrations can become difficult to debug.
+* It's not clear when,
+    * if you have messages that arrive close temporally to the release of the new version.
+    * if you have multiple servers and roll out the new version incrementally.
+* Process manager ends itself, and just before to end it raises `TakeoverRequested` message that will start off the new version of the Process Manager.
+* It lets the original Process Manager run to the end of its life cycle.
+* It exposes a Correlation Id for debugging purposes.
+* It does not require any explicit framework support to work.
+
+### Event sourced process managers
+* Advantage of storing events as opposed to storing state is that state is transient.
+* Instead of keeping state off in a state storage, the Process Manager is rebuilt by replaying the messages it has previously seen.
+* Process Manager is rebuilding its state on every message that it receives, much the same as an aggregate would rebuild its state off of an event stream in the domain model.
+* For performance reasons it is not common to actually rebuild the full state on every message it receives. Instead the current state is cached either in memory or in a persistent manner.
+* The state of the Process Manager can at any point be deleted and recreated.
+* Useful for new version of a Process Manager that needs to replace a currently running Process Manager.
+    * You have to delete the currently cached version of state and let the new version of the Process Manager replay through the history to come to its concept of what the current state is.
+* It also handles the case of the previous version not having in its state things that will be needed by the new version of the process.
+* The new version must be able to understand all the possible event streams that result from the previous version.
+
 ### Warning
+* Situations where a running process is changed while it is running should be avoided.
+* If you are trying to version running Process Managers, you are doing it wrong.
+* Focus on releasing new processes in the same way the business does.
