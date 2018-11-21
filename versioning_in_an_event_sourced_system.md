@@ -385,13 +385,80 @@ Let’s imagine that the account makes a fat-finger mistake and accidentally tra
 
 ## Internal vs external models
 ### External integrations
+* It conforms the system to an existing standardized integration model.
+* They can allow for modularity between systems.
+* They can allow other systems to easily integrate with your system.
+
 ### Granularity
+* Internal and external models have drastically different needs.
+    * They have different granularity.
+* Internal models tend to have very fine-grained events. Due to,
+    * the separation between services.
+    * the focus on a use-case being represented by an event.
+* With internal models the service boundaries chosen for the system tend to be visible within the events in the model.
+```
+OrderPlaced: {
+    orderId: 8282,
+    customerId: 4432,
+    products: [5757, 3321],
+    total: 17.95
+}
+```
+
+* External models generally prefer more coarse-grained events.
+* An external model will generally denormalize relevant information onto the event.
+    * It only wants to listen to a single event and to be able to act upon it
+* An external consumer prefers to not have to listen to multiple events with storing intermediary information.
+* This approach is more simple for an outside consumer.
+* It provides a level of indirection from the internal model.
+* It hides the details of how the internal model works.
+* It's free to change its service boundaries or how it handles its internal eventing without affecting the external consumers.
+```
+OrderPlaced: {
+    orderId: 8282,
+    customer: {
+        customerId: 4432,
+        customerName: 'John Doe',
+        postalCode: 'EC1-001',
+        customerAge: 35,
+        customerStatus: 'Gold'
+    }
+    products: [
+        {name: 'razor blade ice cream', productId: 6565},
+        {name: 'thing you should never eat', productId: 4242}
+    ],
+    total: 17.95
+}
+```
+
 ### Rate of change
+* Changes to external models will possibly affect all consumers of the external model. For this reason,
+    * external models are more formalized than internal models
+    * changes to external models generally go through further diligence than changes to internal models.
+* External models are designed keep in mind extensibility.
+    * They are formalized to media types or described in a schema language.
+    * Interactions will generally be well documented for consumers.
+* Many external models are built using weak-schema.
+    * Adding things to the external model will not break things. 
+
 ### How to implement
-### Summary
+* The two models have different purposes and have quite different levels of granularity.
+* A common implementation to introduce an external model is to introduce a service that acts as a Message Translator.
+* All of the code associated with the translation to the external model is located in a single service.
+    * The rest of the services know nothing of the external model.
+* It's easy to introduce multiple of these services to support multiple external models.
+ 
+### Summary
+* Smaller systems can usually get away with only using an internal model.
+* As the system size and complexity grows however it is often needed to introduce levels of indirection via the introduction of an external model.
+* External models are often used even to other services maintained by the same team, the distintion is how the model is used not who uses it.
+* Internal models tend to be very fine-grained.
+* External models are more coarse.
+* External models tend to be much more conservative in how they approach change compared to internal models.
+    * A common pattern is to introduce an external model to allow the internal model to be more agile in regards to change.
 
 ## Versioning process managers
-### Process managers
+### Process managers
 ### Basic versioning
 ### Upcasting state
 ### Take over
