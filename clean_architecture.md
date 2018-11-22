@@ -1021,3 +1021,14 @@ Interfaces are less volatile than implementations.
 * Relational database systems that force the data to be organized into tables and accessed with SQL have much more to do with the latter than with the former.
 * The data is significant.
 * The database is a detail.
+
+### 31. The web is a detail
+#### The endless pendulum
+* In IT history, the web didn’t change anything at all.
+* The web was simply another oscillation to our industry.
+* Those oscillations are just short-term issues that we want to push away from the central core of our business rules.
+* Architects have to look at the long term.
+
+#### The upshot
+* The GUI is a detail. The web is a GUI. So the web is a detail.
+* As an architect, you want to put details like that behind boundaries that keep them separate from your core business logic.
