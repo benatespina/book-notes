@@ -1032,3 +1032,31 @@ Interfaces are less volatile than implementations.
 #### The upshot
 * The GUI is a detail. The web is a GUI. So the web is a detail.
 * As an architect, you want to put details like that behind boundaries that keep them separate from your core business logic.
+
+### 32. Frameworks are details
+#### Framework authors
+* Your problems are not framework authors' problems.
+
+#### Asymmetric marriage
+* The author wants to couple to that framework, because the author has absolute control over that framework.
+* Nothing feels more validating to a framework author than a bunch of users willing to inextricably derive from the author’s base classes.
+* It’s a one-directional marriage.
+    * You take on all the risk and burden.
+    * The framework author takes on nothing at all.
+
+#### The risks
+* The architecture of the framework is often not very clean.
+    * They violate the *Dependency Rule* inheriting their code into your business objects.
+* The framework may help you with some early features, but as your product matures, you’ll find the framework fighting you more and more as time passes.
+* The framework may evolve in a direction that you don’t find helpful.
+* A new and better framework may come along that you wish you could switch to.
+
+#### The solution
+* Treat the framework as a detail that belongs in one of the outer circles of the architecture.
+
+#### I now pronounce you
+* There are some frameworks that you simply must marry.
+* It should still be a decision.
+
+#### Conclusion
+* Keep the framework behind an architectural boundary if at all possible, for as long as possible.
