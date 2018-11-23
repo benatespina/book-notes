@@ -1060,3 +1060,16 @@ Interfaces are less volatile than implementations.
 
 #### Conclusion
 * Keep the framework behind an architectural boundary if at all possible, for as long as possible.
+
+### 33. Case study: video sales
+#### The product
+#### Use case analysis
+#### Component architecture
+#### Dependency management
+These points are just the explanation about the example.
+
+#### Conclusion
+* You can separate actors based on the Single Responsibility Principle and based on the Dependency Rule.
+* Separate components that change for different reasons, and at different rates.
+* The different reasons correspond to the actors; the different rates correspond to the different levels of policy.
+
