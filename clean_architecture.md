@@ -1073,3 +1073,48 @@ These points are just the explanation about the example.
 * Separate components that change for different reasons, and at different rates.
 * The different reasons correspond to the actors; the different rates correspond to the different levels of policy.
 
+### 34. The missing chapter
+#### Package by layer
+* Traditional horizontal layered architecture.
+* We separate our code based on what it does from a technical perspective.
+    * Web - business logic - persistence
+* Layered architecture is a good way to get started.
+* It scales very bad because you need more modularization.
+* It doesn’t scream anything about the business domain.
+
+#### Package by feature
+* It's based on related features, domain concepts.
+* This is a very simple refactoring from the *package by layer* style.
+* It screams something about the business domain.
+
+#### Ports and adapters
+* Architecture where domain focused code is independent and separate from the technical implementation details such as frameworks and databases.
+* The major rule is that the “outside” depends on the “inside”.
+
+#### Package by component
+ * If you’re writing code that needs to do something with orders, there’s just one place to go—the OrdersComponent.
+ * Inside the component, the separation of concerns is still maintained, so the business logic is separate from data persistence, but that’s a component implementation detail that consumers don’t need to know about.
+ * Well-defined components are monolithic applications that are a stepping stone to a micro-services architecture.
+
+#### The evil is in the implementation details
+* Instinctively we use the *public* keyword without thinking.
+* Marking all of your types as *public* means you’re not taking advantage of the facilities that your programming language provides with regard to encapsulation.
+
+#### Organization versus encapsulation
+* Lean on the compiler to enforce your architectural principles, rather than relying on self-discipline and post-compilation tooling.
+
+#### Other decoupling modes
+* Module frameworks like OSGi and the new Java 9 module system.
+* You can split code across different source code trees.
+    * Source code for the business and domain.
+    * Source code for the web.
+    * Source code for the persistence.
+* It's ideal but very expensive in maintainability so,
+    * Source code for the domain.
+    * Source code for infrastructure.
+* It has a trade off because you can call from web controller to database repostory without navigating through the domain.
+
+#### Conclusion: the missing advice
+* Think about how to map your desired design on to code structures, how to organize that code, and which decoupling modes to apply during runtime and compile-time.
+* Leave options open where applicable, but be pragmatic, and take into consideration the size of your team, their skill level, and the complexity of the solution in conjunction with your time and budgetary constraints.
+* Also think about using your compiler to help you enforce your chosen architectural style, and watch out for coupling in other areas, such as data models.
