@@ -38,3 +38,11 @@ By Kent Beck.
         * XP insists that only the highest priority tasks are addressed.
     * Staff turnover.
         * XP asks programmers to accept responsibility for estimating and completing their own work, gives them feedback about the actual time taken so their estimates can improve, and respects those estimates. XP also encourages human contact among the team, reducing the loneliness that is often at the heart of job dissatisfaction. New team members are encouraged to gradually accept more and more responsibility.
+
+## Part 1. Exploring XP
+
+### Chapter 2. Learning to Drive
+* XP paradigm: Stay aware. Adapt. Change.
+* The problem isn't the change, because change is going to happen; the problem, rather, is our inability to cope with change.
+* XP lets you adapt by making frequent, small corrections; moving towards your goal with deployed software at short intervals.
+    * You don't wait a long time to find out if you were going the wrong way.
