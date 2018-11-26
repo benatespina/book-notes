@@ -46,3 +46,13 @@ By Kent Beck.
 * The problem isn't the change, because change is going to happen; the problem, rather, is our inability to cope with change.
 * XP lets you adapt by making frequent, small corrections; moving towards your goal with deployed software at short intervals.
     * You don't wait a long time to find out if you were going the wrong way.
+
+### Chapter 3. Values, principles and practices
+* Values are the roots of the things we like and don't like in a situation.
+* Values bring purpose to practices.
+* Values are universal.
+* Practices are evidence of values.
+* Practices bring accountability to values.
+* Practices are intensely situated.
+* Principles are domain-specific guidelines for life.
+* First you have to garden, then join the community of gardeners, then teach others to garden. Then you are a gardener.
