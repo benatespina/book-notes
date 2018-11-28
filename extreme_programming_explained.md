@@ -56,3 +56,38 @@ By Kent Beck.
 * Practices are intensely situated.
 * Principles are domain-specific guidelines for life.
 * First you have to garden, then join the community of gardeners, then teach others to garden. Then you are a gardener.
+
+### Chapter 4. Values
+* What actually matters is not how any given person behaves as much as how the individuals behave as part of a team and as part of an organization.
+
+#### Communication
+* When you encounter a problem, ask yourselves if the problem was caused by a lack of communication.
+* What communication do you need now to address the problem?
+* What communication do you need to keep yourself out of this trouble in the future?
+
+#### Simplicity
+* When you need to change to regain simplicity, you must find a way from where you are to where you want to be.
+* Improving communication helps achieve simplicity by eliminating unneeded or deferrable requirements from today's concerns.
+* Achieving simplicity gives you that much less to communicate about.
+
+#### Feedback
+* Change is inevitable, but change creates the need for feedback.
+* Feedback comes in many forms:
+    * Opinions about an idea, yours or your teammates'.
+    * How the code looks when you implement the idea.
+    * Whether the tests were easy to write.
+    * Whether the tests run.
+    * How the idea works once it has been deployed.
+* XP teams strive to generate as much feedback as they can handle as quickly as possible.
+
+#### Courage
+* Doing something without regard for the consequences is not effective teamwork.
+* The courage to speak truths, pleasant or unpleasant, fosters communication and trust. The courage to discard failing solutions and seek new ones encourages simplicity.
+* The courage to seek real, concrete answers creates feedback.
+
+#### Respect
+* If members of a team don't care about each other and what they are doing, XP won't work.
+* If members of a team don't care about a project, nothing can save it.
+
+#### Others
+* Other important values include safety, security, predictability, and quality-of-life.
