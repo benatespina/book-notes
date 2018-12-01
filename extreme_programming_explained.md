@@ -91,3 +91,96 @@ By Kent Beck.
 
 #### Others
 * Other important values include safety, security, predictability, and quality-of-life.
+
+### Chapter 5. Principles
+#### Humanity
+* Basic safety: freedom from hunger, physical harm, and threats to loved ones. Fear of job loss threatens this need.
+* Accomplishment: the opportunity and ability to contribute to their society.
+* Belonging: the ability to identify with a group from which they receive validation and accountability and contribute to its shared goals.
+* Growth: the opportunity to expand their skills and perspective.
+* Intimacy: the ability to understand and be understood deeply by others.
+
+#### Economics
+* Time value of money: a dollar today is worth more than a dollar tomorrow.
+* Software development is more valuable when it earns money sooner and spends money later.
+* If I can redeploy my media scheduling program for a variety of scheduling-related tasks, it is much more valuable than if it can only be used for its originally intended purpose.
+
+#### Mutual benefit
+* It's about searching for practices that benefit me now, me later, and my customer as well.
+* Extensive internal documentation of software is an example of a practice that violates mutual benefit. I am supposed to slow down my development considerably so some unknown person in a potential future will have an easier time maintaining this code. I can see a possible benefit to the future person should the documentation still happen to be valid, but no benefit now.
+* XP solves like this:
+    * I write automated tests that help me design and implement better today. I leave these tests for future programmers to use as well.
+    * I carefully refactor to remove accidental complexity, giving me both satisfaction and fewer defects and making the code easier to understand for those who encounter it later.
+    * I choose names from a coherent and explicit set of metaphors which speeds my development and makes the code clearer to new programmers.
+
+#### Self-similarity
+* Just because you copy a structure that works in one context doesn't mean it will work in another.
+* Having the system-level tests before you begin implementation simplifies design, reduces stress, and improves feedback.
+
+#### Improvement
+* To do the best you can today, striving for the awareness and understanding necessary to do better tomorrow.
+* It doesn't mean waiting for perfection in order to begin.
+* The history of software development technology shows us gradually eliminating wasted effort.
+
+#### Diversity
+* Teams where everyone is alike, while comfortable, are not effective. 
+* Teams need to bring together a variety of skills, attitudes, and perspectives to see problems and pitfalls, to think of multiple ways to solve problems, and to implement the solutions.
+* Two ideas about a design present an opportunity, not a problem.
+
+#### Reflection
+* Good teams don't just do their work, they think about how they are working and why they are working.
+* They don't try to hide their mistakes, but expose them and learn from them.
+* Reflection moments:
+    * Official: do pair programming and continuous integration.
+    * Non-official: conversation with a spouse or friend, vacation, non-software-related reading and activities, shared meals and coffee breaks.
+* Reflection comes after action.
+* Learning is action reflected.
+* To maximize feedback, reflection in XP teams is mixed with doing.
+
+#### Flow
+* It's delivering a steady flow of valuable software by engaging in all the activities of development simultaneously.
+* It suggests that for improvement, deploy smaller increments of value ever more frequently.
+
+#### Opportunity
+* To reach excellence, problems need to turn into opportunities for learning and improvement, not just survival.
+* Turning problems into opportunities takes place across the development process.
+* It maximizes strengths and minimizes weaknesses.
+
+#### Redundancy
+* Defects corrode trust and trust is the great waste eliminator.
+* Defects are a critical, difficult problem.
+* Defects are addressed in XP by many of the practices:
+    * pair programming
+    * continuous integration
+    * sitting together
+    * real customer involvement
+    * daily deployment
+
+#### Failure
+* Failure is not a waste if it imparts knowledge.
+* Knowledge is valuable and sometimes hard to come by.
+* Failure may not be avoidable waste.
+
+#### Quality
+* Projects don't go faster by accepting lower quality.
+* Pushing quality higher often results in faster delivery.
+* Quality isn't a purely economic factor. People need to do work they are proud of.
+* A concern for quality is no excuse for inaction.
+    * If you don't know a clean way to do a job that has to be done, do it the best way you can.
+    * If you know a clean way but it would take too long, do the job as well as you have time for now. Resolve to finish doing it the clean way later.
+    * You have to live with two architectures solving the same problem while you transition from one to the other.
+        * Then the transition itself becomes a demonstration of quality: making a big change efficiently in small, safe steps.
+
+#### Baby steps
+* It's always tempting to make big changes in big steps.
+* Baby steps acknowledge that the overhead of small steps is much less than when a team wastefully recoils from aborted big changes.
+
+#### Accepted responsibility
+* Responsibility cannot be assigned, it can only be accepted.
+* If someone tries to give you responsibility, only you can decide if you are responsible or if you aren't.
+* With responsibility comes authority.
+* When a process expert can tell me how to work, but doesn't share in that work or its consequences, authority and responsibility are misaligned.
+
+#### Conclusion
+* Use principles to understand the practices better and to improvise complementary practices when you don't find one that suits your purpose.
+* The principles give you a better idea of what the practice is intended to accomplish.
