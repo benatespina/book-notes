@@ -184,3 +184,10 @@ By Kent Beck.
 #### Conclusion
 * Use principles to understand the practices better and to improvise complementary practices when you don't find one that suits your purpose.
 * The principles give you a better idea of what the practice is intended to accomplish.
+
+### Chapter 6. Practices
+* They are kind of things you'll see XP teams doing day-to-day.
+* If the situation changes, you choose different practices to meet those conditions.
+    * Your values do not have to change in order to adapt to a new situation.
+    * Some new principles may be called when you change domains.
+* They are a vector from where you are to where you can be with XP.
