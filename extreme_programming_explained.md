@@ -191,3 +191,98 @@ By Kent Beck.
     * Your values do not have to change in order to adapt to a new situation.
     * Some new principles may be called when you change domains.
 * They are a vector from where you are to where you can be with XP.
+
+### Chapter 7. Primary practices
+#### Sit together
+* No matter what the client says the problem is, it is always a people problem. Technical fixes alone are not enough.
+* How important it is to sit together, to communicate with all our senses.
+* Tearing down the cubicle walls before the team is ready is counterproductive.
+* A team that knows that physical proximity enhances communication and that has learned the value of communication will open up their own space, given the chance.
+
+#### Whole team
+* Include on the team people with all the skills and perspectives necessary for the project to succeed. - Cross-functional teams.
+* People need a sense of team:
+    * We belong.
+    * We are in this together.
+    * We support each others' work, growth, and learning.
+* What constitutes a “whole team” is dynamic.
+* If a set of skills or attitudes becomes important, bring a person with these skills on the team.
+* If someone is no longer necessary, he can go elsewhere.
+
+#### Informative workspace
+* Make your workspace about your work.
+    * Walk into the team space and get a general idea of how the project is going in 15 seconds.
+
+#### Energized work
+* Work only as many hours as you can be productive and only as many hours as you can sustain.
+* It's easy to remove value from a software project; but when you're tired, it's hard to recognize that you're removing value.
+* When you're sick, respect yourself and the rest of your team by resting and getting well. Taking care of yourself is the quickest way back to energized work.
+* You can make incremental improvements in work hours.
+    * Declare a two-hour stretch each day as Code Time. Turn off the phones and email notification, and just program for two hours.
+
+#### Pair programming
+* It's a dialog between two people simultaneously programming (and analyzing and designing and testing) and trying to program better.
+    * Keep each other on task.
+    * Brainstorm refinements to the system.
+    * Clarify ideas.
+    * Take initiative when their partner is stuck, thus lowering frustration.
+    * Hold each other accountable to the team's practices.
+* Pair programming is tiring but satisfying.
+* Rotate pairs can be a good idea, switching at natural breaks in development.
+
+##### Pairing and personal space
+* Different individuals and cultures are comfortable with different amounts of body space.
+* Personal hygiene and health are important issues when pairing.
+* Ideally, emotions at work will be about work.
+* It is important to respect individual differences when pairing.
+* If you aren't comfortable, the team isn't doing as well as it could.
+
+#### Stories
+* As soon as a story is written, try to estimate the development effort necessary to implement it.
+* Stories are estimated very early in their life.
+* Get the greatest return from the smallest investment.
+* You can't make a good decision based on image alone.
+    * You need to know your constraints, both cost and intended use.
+
+#### Weekly cycle
+* The nice thing about a week as opposed to two or three is that everyone is focused on Friday.
+* The team's job—programmers, testers, and customers together—is to write the tests and then get them to run in five days.
+* If you get to Wednesday and it is clear that all the tests won't be running, that the stories won't be completed and ready to deploy, you still have time to choose the most valuable stories and complete them.
+* Planning is a form of necessary waste.
+
+#### Quarterly cycle
+* Using a quarter as a planning horizon synchronizes nicely with other business activities that occur quarterly.
+* They're comfortable for interaction with external suppliers and customers.
+* They're good for team reflection, finding gnawing-but-unconscious bottlenecks.
+
+#### Slack
+* You may have to begin slack with yourself, telling yourself how long you actually think a task will take and giving yourself time to do it, even if the rest of the organization is not ready for honest and clear communication.
+
+#### Ten-minute build
+* Automatically build the whole system and run all of the tests in ten minutes.
+    * A build that takes longer than ten minutes will be used much less often, missing the opportunity for feedback. 
+
+#### Continuous integration
+* Team programming is a divide, conquer, and integrate problem.
+* The integration step is unpredictable, but can easily take more time than the original programming.
+    * The longer you wait to integrate, the more it costs and the more unpredictable the cost becomes.
+* Continuous integration should be complete enough that the eventual first deployment of the system is no big deal.
+
+#### Test-first programming
+* It addresses many problems.
+    * Scope creep: if you really want to put that other code in, write another test after you've made this one work.
+    * Coupling and cohesion: if it's hard to write a test, it's a signal that you have a design problem, not a testing problem. Loosely coupled, highly cohesive code is easy to test.
+    * Trust: writing clean code that works and demonstrating your intentions with automated tests, you give your teammates a reason to trust you.
+    * Rhythm: it's clearer what to do next: either write another test or make the broken test work. Code, refactor, test, code, refactor.
+* Continuous testing reduces the time to fix errors by reducing the time to discover them.
+
+#### Incremental design
+* It says that design done close to when it is used is more efficient.
+* Refactoring is a discipline of design that codifies these recurring patterns of changes.
+    * They can occur at any level of scale.
+    * Few design decisions are difficult to change once made.
+* The result is systems that can start small and grow as needed without exorbitant cost.
+
+#### And now...
+* They provide a foundation of respect, communication, and feedback that fosters simplicity and courage.
+* The team members can use their increasing confidence and competence to build relationships inside and outside the team.
