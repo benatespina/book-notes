@@ -286,3 +286,28 @@ By Kent Beck.
 #### And now...
 * They provide a foundation of respect, communication, and feedback that fosters simplicity and courage.
 * The team members can use their increasing confidence and competence to build relationships inside and outside the team.
+
+### Chapter 8. Getting started
+* One option is to use XP-style planning.
+    * Write stories about improving your software development process. 
+        * Automate the build, Test first all day, Pair program with Joe for two hours.
+    * Estimate how long each will take.
+    * Figure out your budget for process improvement.
+    * Pick a story to work on first.
+    * Adapt as you discover what is easy or valuable and what is difficult.
+* Change always starts at home.
+    * Programmers can start writing tests first.
+    * Testers can automate their tests.
+    * Customers can write stories and set clear priorities.
+    * Executives can expect transparency.
+
+#### Mapping the practices
+* An exercise for discovering what each practice means for you and your team.
+    * In the middle is the practice.
+    * Directly below that is the purpose of the practice as I see it: to keep my work and my life in balance.
+    * Attached to the practice are factors that affect it and, in this case, symptoms that the practice isn't going well.
+    * Map whatever issues come to mind when you think about a practice.
+
+#### Conclusion
+* SW development is capable of much more than it is currently delivering.
+* Defects should be notable because they are rare.
