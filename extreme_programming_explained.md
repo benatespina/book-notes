@@ -311,3 +311,77 @@ By Kent Beck.
 #### Conclusion
 * SW development is capable of much more than it is currently delivering.
 * Defects should be notable because they are rare.
+* Major scope adjustments because of lack of progress should only need to occur in the first half of schedules.
+* Initial deployment of software should come after a small percentage of the project budget is spent.
+* Teams should be able to grow and shrink without catastrophic consequences.
+
+### Chapter 9. Corollary practices
+#### Real customer involvement
+* The closer customer needs and development capabilities are, the more valuable development becomes.
+* When you act trustworthy and have nothing to hide, you are more productive.
+* When you are ready with accurate estimates and low defect rates, including customers in the development process fosters trust and encourages continued improvement.
+
+#### Incremental deployment
+* Big deployments have a high risk and high human and economic costs.
+* Find a little piece of functionality or a limited data set you can handle right away. Deploy it.
+* You'll have to find a way to run both programs in parallel, splitting and merging files or training some users to use both programs.
+    * This scaffolding, technical or social, is the price you pay for insurance.
+
+#### Team continuity
+* Value in software is created not just by what people know and do but also by their relationships and what they accomplish together.
+* Ignoring the value of relationships and trust just to simplify the scheduling problem is false economy.
+
+#### Shrinking teams
+* Toyota Production System:
+    * As a team grows in capability, keep its workload constant but gradually reduce its size.
+    * This frees people to form more teams.
+    * When the team has too few members, merge it with another too-small team.
+* Figure out how many stories the customer needs each week.
+* Strive to improve development until some of the team members are idle.
+* Then you're ready to shrink the team and continue.
+
+#### Root-cause analysis
+* Write an automated system-level test that demonstrates the defect, including the desired behavior. This can be done by the customer, by customer support, or by developers.
+* Write a unit test with the smallest possible scope that also reproduces the defect.
+* Fix the system so the unit test works. This should cause the system test to pass also. If not, return to the previous point.
+* Once the defect is resolved, figure out why the defect was created and wasn't caught. Initiate the necessary changes to prevent this kind of defect in the future.
+
+#### Shared code
+* If something is wrong with the system and fixing it is not out of scope for what I'm doing right now, I should go ahead and fix it.
+* Until the team has developed a sense of collective responsibility, no one is responsible and quality will deteriorate.
+* People will make changes without regard for the team-wide consequences.
+* Some techniques like pair programming and continuous integration are interesting to try to avoid selfish conducts.
+
+#### Code and tests
+* Maintain only the code and the tests as permanent artifacts.
+* Generate other documents from the code and tests.
+* Rely on social mechanisms to keep alive important history of the project.
+* The valuable decisions in software development are:
+    * What are we going to do?
+    * What aren't we going to do?
+    * How are we going to do what we do?
+
+#### Single code base
+* Multiple code streams are an enormous source of waste in software development.
+* Don't make more versions of your source code.
+* Rather than add more code bases, fix the underlying design problem that is preventing you from running from a single code base.
+
+#### Daily deployment
+* Put new software into production every night.
+* Any gap between what is on a programmer's desk and what is in production is a risk.
+* A programmer out of sync with the deployed software risks making decisions without getting accurate feedback about those decisions.
+* There are technical, psychological or social and business-related barriers.
+    * Working to remove it and then letting more frequent deployment come as a natural consequence will help you improve development.
+
+#### Negotiate scope contract
+* Reduce risk by signing a sequence of short contracts instead of one long one.
+* They're a mechanism for aligning the interests of suppliers and customers to encourage communication and feedback.
+* They give everyone the courage to do what looks right today, not do something ineffective just because it is in the contract.
+
+#### Pay-per-use
+* Money is the ultimate feedback.
+* Connecting money flow directly to software development provides accurate, timely information with which to drive improvement.
+* If you can't implement pay-per-use, you might be able to go to a subscription model.
+
+#### Conclusion
+* The primary and corollary practices are the core of excellence for software development teams.
