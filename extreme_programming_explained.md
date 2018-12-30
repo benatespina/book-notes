@@ -385,3 +385,69 @@ By Kent Beck.
 
 #### Conclusion
 * The primary and corollary practices are the core of excellence for software development teams.
+
+### Chapter 10. The whole XP team
+#### Testers
+* Much of the responsibility for catching trivial mistakes is accepted by the programmers.
+    * Test-first programming results in a suite of tests that help keep the project stable.
+* The role of testers is to help defining and specifying what will constitute acceptable functioning of the system before the functionality has been implemented.
+
+#### Interaction designers
+* They choose overall metaphors for the system, write stories, and evaluate usage of the deployed system to find opportunities for new stories.
+
+#### Architects
+* THey look for and execute large-scale refactorings, write system-level tests that stress the architecture, and implement stories.
+* Making big architectural changes in small, safe steps is one of the challenges for an XP team.
+* They help choose the most appropriate fracture lines and then follow the system as a whole.
+    * They keep the big picture in mind as the groups focus on their smaller section.
+
+#### Project managers
+* They facilitate communication inside the team and coordinate communication with customers, suppliers, and the rest of the organization.
+* They are responsible for keeping plans synchronized with reality.
+* They facilitate communication within the team, increasing cohesiveness and confidence.
+
+#### Product managers
+* They help the team decide priorities by analyzing the differences between actual and assumed requirements.
+    * They adapt the story and theme to what is really happening now.
+* Stories should be sequenced for business, not technical, reasons.
+* The goal is a working system from the first week.
+* They encourage communication between customers and programmers, making sure the most important customer concerns are heard and acted on by the team.
+
+#### Executives
+* They provide an XP team with courage, confidence, and accountability.
+* They articulate and maintain large-scale goals.
+* They have a right to see not just good software coming from the team, but continuing improvement as well.
+* They are free to ask for explanations about any aspect that makes sense.
+* Two metrics to measure the health of XP teams:
+    * Number of defects found after development. Each is an opportunity for the team to learn and improve.
+    * The time lag between the beginning of investment in an idea and when the idea first generates revenue.
+
+#### Technical writers
+* They provide early feedback about features and to create closer relationships with users.
+* They create closer relationships with users.
+    * They help them learn about the product, listening to their feedback, and addressing confusion with further publications or new stories.
+
+#### Users
+* They help write and pick stories and make domain decisions during development.
+
+#### Programmers
+* They estimate stories and tasks, break stories into tasks, write tests, write code to implement features, automate tedious development process, and gradually improve the design of the system.
+* They need to develop good social and relationship skills.
+
+#### Human resources
+* Two challenges:
+    * Reviews.
+    * Hiring.
+* Valuable employees in XP:
+    * Act respecful.
+    * Play well with others.
+    * Take initiative.
+    * Deliver on their commitments.
+* XP teams put much more emphasis on teamwork and social skills.
+* The best interviewing technique is to have the candidate work with the team for a day.
+    * Pair programming provides an excellent test of technical and social skills. 
+
+#### Roles
+* The goal is to have everyone contribute the best he has to offer to the team's success.
+* As the team matures, keep in mind the alignment of authority and responsibility.
+* Everyone on the team can recommend changes, but they should be prepared to back up their concerns with action.
