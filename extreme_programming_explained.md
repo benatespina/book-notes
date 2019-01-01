@@ -451,3 +451,15 @@ By Kent Beck.
 * The goal is to have everyone contribute the best he has to offer to the team's success.
 * As the team matures, keep in mind the alignment of authority and responsibility.
 * Everyone on the team can recommend changes, but they should be prepared to back up their concerns with action.
+
+### Chapter 11. The theory of Constraints
+* In any system there is one constraint at a time.
+* To improve overall system throughput you have to:
+    * Find the constraint.
+    * Make sure it is working full speed.
+    * Find ways of either increasing the capacity of the constraint, offloading some of the work onto non-constraints, or eliminating the constraint entirely.
+* The Theory of Constraints says there is always a constraint.
+* When we eliminate one constraint we create another.
+* Micro-optimization is never enough.
+* To improve our results we must look at the whole situation before deciding what to change.
+* Software development is a human process not a factory.
