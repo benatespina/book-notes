@@ -463,3 +463,12 @@ By Kent Beck.
 * Micro-optimization is never enough.
 * To improve our results we must look at the whole situation before deciding what to change.
 * Software development is a human process not a factory.
+
+### Chapter 12. Planning: managing scope
+* It starts with putting the current goals, assumptions, and facts on the table.
+    * With current, explicit information, you can work toward agreement about what's in scope, what's out of scope, and what to do next.
+* Planning is complicated because the estimates of the cost and value of stories are uncertain.
+* Lowering the quality can create the illusion of progress this way, but you pay in reduced satisfaction and damaged relationships.
+* There is a limit to how much work can be done in a day.
+    * More time at the desk does not equal increased productivity for creative work.
+* It's open and accessible, that reflects the kind of relationships that make for the most valuable software development.
