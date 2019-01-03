@@ -472,3 +472,15 @@ By Kent Beck.
 * There is a limit to how much work can be done in a day.
     * More time at the desk does not equal increased productivity for creative work.
 * It's open and accessible, that reflects the kind of relationships that make for the most valuable software development.
+
+### Chapter 13. Testing: early, often, and automated
+* Defects destroy the trust required for effective software development.
+* Without trust, people spend much of their time defending themselves against the possibility that someone else may have made a mistake.
+* Defects are expensive when they occur.
+    * The direct costs of fixing the defects.
+    * The indirect costs because of damaged relationships, lost business, and lost development time.
+* Acceptable level is to reduce the occurrence of defects to an economically sustainable level.
+* Software testing is double-checking.
+    * You say what you want a computation to do once when you write a test.
+    * You say it quite differently when you implement the computation.
+    * If the two expressions of the computation match, the code and the tests are in harmony and likely to be correct.
