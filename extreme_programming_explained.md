@@ -484,3 +484,20 @@ By Kent Beck.
     * You say what you want a computation to do once when you write a test.
     * You say it quite differently when you implement the computation.
     * If the two expressions of the computation match, the code and the tests are in harmony and likely to be correct.
+* Beta testing is a symptom of weak testing practices and poor communication with customers.
+
+### Chapter 14. Designing: the value of time
+* If you can generate value without feedback, designing sooner makes more sense.
+* If experience creates most of the value, designing just enough today to get going and then designing mostly in the light of experience makes more sense.
+* The shift to XP-style design is a shift in the timing of design decisions.
+* Design is deferred until it can be made in the light of experience and the decisions can be used immediately.
+    * Deploy software sooner.
+    * Make decisions with certainty.
+    * Avoid living with bad decisions.
+    * Maintain the pace of development as the original design assumptions are superseded.
+
+#### Simplicity
+* *Appropriate for the intended audience*: it doesn't matter how brilliant and elegant a piece of design is; if the people who need to work with it don't understand it, it isn't simple for them.
+* *Communicative*: every idea that needs to be communicated is represented in the system. Like words in a vocabulary, the elements of the system communicate to future readers.
+* *Factored*: duplication of logic or structure makes code hard to understand and modify.
+* *Minimal*: within the above three constraints, the system should have the fewest elements possible. Fewer elements means less to test, document, and communicate.
