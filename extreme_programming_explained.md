@@ -501,3 +501,48 @@ By Kent Beck.
 * *Communicative*: every idea that needs to be communicated is represented in the system. Like words in a vocabulary, the elements of the system communicate to future readers.
 * *Factored*: duplication of logic or structure makes code hard to understand and modify.
 * *Minimal*: within the above three constraints, the system should have the fewest elements possible. Fewer elements means less to test, document, and communicate.
+
+### Chapter 15. Scaling XP
+#### Number of people
+* *Conquer-and-divide* strategy instead of a *divide-and-conquer*:
+    * First solve a small part of the problem with a small team.
+    * Divide the system along its natural fracture lines and begin working on it with a few teams.
+    * Partitioning introduces the risk that the pieces won't fit on integration, so integrate frequently to reconcile differing assumptions between teams.
+
+#### Investement
+* There is interesting work to be done outside the scope of XP in rethinking a mutually beneficial relationship between accounting and software development.
+
+#### Size of organization
+* The project manager presents the information in a form the organization can absorb.
+* The story cards on the wall are still “the truth”.
+* Anyone who wants to learn to read them is welcome to come in, look at them, and ask questions.
+* The project manager makes sure that the organization's expectations are met.
+* It can be differente inside the XP team and inside other teams.
+    * Respect the others in the organization.
+    * Don't push your newfound knowledge and power on others for your own benefit.
+
+#### Time
+* Projects that start and stop frequently, with the team scattered at each shutdown, are more difficult to maintain over time.
+* *Rosseta Stone*:
+    * This brief guide to future maintainers tells how to run the build-and-test process and points to interesting starting places from which to learn the system.
+    * The tests included in the build prevent maintainers from falling into pits while they learn their way around the system.
+
+#### Problem complexity
+* XP is suited to projects requiring the close cooperation of specialists.
+    * Getting everyone to work in concert while learning a bit about each others' specialities.
+
+#### Solution complexity
+* Chip away at the complexity while continuing to deliver.
+* One objection is that this “extra” cleanup takes too long.
+* The team is likely wasting time on interruptions to fix defects.
+    * Cleaning up helps reduce the overhead of work.
+* Visible planning can make it easier for every one to see where the time is already going.
+* It is easier to accept the estimates necessary to do the job right.
+
+#### Consequences of failure
+* A system isn't certifiably secure unless it has been built with a set of security principles in mind and has been audited by a security expert.
+* These practices have to be incorporated into the team's daily work.
+
+#### Conclusion
+* The basic values and principles apply at all scales.
+* The practices can be modified to suit your situation.
