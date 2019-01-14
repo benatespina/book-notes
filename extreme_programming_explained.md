@@ -546,3 +546,19 @@ By Kent Beck.
 #### Conclusion
 * The basic values and principles apply at all scales.
 * The practices can be modified to suit your situation.
+
+### Chapter 16. Interview
+(It's just an interview.)
+
+## Part 2. Philosophy of XP
+
+### Chapter 17. Creation story
+(It's a personal tale about Kent Beck's beginnings with XP.)
+
+### Chapter 18. Taylorism and software
+* Things usually go according to plan.
+* Micro-optimization leads to macro-optimization.
+* People are mostly interchangeable and need to be told what to do.
+* We have unconsciously inherited this social structure and it is bizarrely unsuited to software development.
+    * The first step of social engineering in Taylorism is the separation of planning from execution.
+    * The second step of Taylorist social engineering is the creation of a separate quality department.
