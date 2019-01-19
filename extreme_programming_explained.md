@@ -562,3 +562,14 @@ By Kent Beck.
 * We have unconsciously inherited this social structure and it is bizarrely unsuited to software development.
     * The first step of social engineering in Taylorism is the separation of planning from execution.
     * The second step of Taylorist social engineering is the creation of a separate quality department.
+
+### Chapter 19. Toyota production system
+* Software development is full of the waste of overproduction.
+    * Fat requirements documents that rapidly grow obsolete.
+    * Elaborate architectures that are never used.
+    * Code that goes months without being integrated, tested, and executed in a production environment.
+    * Documentation no one reads until it is irrelevant or misleading.
+* TPS has strong parallels to software development.
+    * Cross-training workers.
+    * Organizing the factory into cells.
+    * Writing gain-sharing contracts between customers and suppliers.
