@@ -591,3 +591,8 @@ By Kent Beck.
 
 #### When you shouldn't use XP
 * If an organization's actual values are secrecy, isolation, complexity, timidity, and disrespect; suddenly expressing the opposite values through a new set of practices will cause trouble rather than create improvement.
+
+### Chapter 21. Purity
+* It's worse to fail with an XP team than to succeed with a pure waterfall team.
+* The goal is successful and satisfying relationships and projects, not membership in the XP Club.
+* Your team is extreme sets other people's expectations for your style of communication, your development practices, and the speed and quality of your results.
