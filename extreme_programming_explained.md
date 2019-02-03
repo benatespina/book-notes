@@ -596,3 +596,7 @@ By Kent Beck.
 * It's worse to fail with an XP team than to succeed with a pure waterfall team.
 * The goal is successful and satisfying relationships and projects, not membership in the XP Club.
 * Your team is extreme sets other people's expectations for your style of communication, your development practices, and the speed and quality of your results.
+
+### Chapter 22. Offshore development
+* Software development could stay on its current path of creeping increments. Without dramatic improvement, though, the global market for software will stagnate as more attractive investments are found in manufacturing and biotechnology.
+* The expanding market will more than make up for losses in any one location because of increased efficiency and multi-site development.
