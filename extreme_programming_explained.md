@@ -573,3 +573,21 @@ By Kent Beck.
     * Cross-training workers.
     * Organizing the factory into cells.
     * Writing gain-sharing contracts between customers and suppliers.
+
+### Chapter 20. Applying XP
+* The way to begin organizational change is still to start with yourself.
+    * It is the one change you have control over.
+    * First develop your skills, then put them into service.
+    * Leading by example is a powerful form of leadership. 
+* Conditions that facilitate sudden turnarounds are:
+    * Aligned values: The team and organization are willing to accept and work with the XP values.
+    * Pain: Clear memory of recent pain makes people more willing to try dramatic changes.
+
+#### Choosing a coach
+* He should be aligned enough with your existing values to be effective, but firm enough in the XP values to keep leading in that direction.
+* He should have enough technical skill to teach what people can't easily learn on their own.
+* He should encourage independence, not dependence.
+    * A good one moves on a little before you think you're ready and leaves behind a team that finds itself firmly on a path to sustainable, profitable, stable, fast, fun software development.
+
+#### When you shouldn't use XP
+* If an organization's actual values are secrecy, isolation, complexity, timidity, and disrespect; suddenly expressing the opposite values through a new set of practices will cause trouble rather than create improvement.
