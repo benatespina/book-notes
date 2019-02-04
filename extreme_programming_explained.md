@@ -608,3 +608,9 @@ By Kent Beck.
     * to encourage deep change,
     * to renew individual values and mutual relationships
     * to give software a seat at the table for the next fifty years.
+
+### Chapter 24. Community and XP
+* Participate in communities, local and global.
+* Look for communities that encourage you to be your best self.
+* If you can't find such a community, start one yourself.
+* As a community we can accomplish more than we ever could in isolation.
