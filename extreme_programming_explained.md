@@ -614,3 +614,7 @@ By Kent Beck.
 * Look for communities that encourage you to be your best self.
 * If you can't find such a community, start one yourself.
 * As a community we can accomplish more than we ever could in isolation.
+
+### Chapter 25. Conclusion
+* There is no improvement without first improving myself.
+* XP is a way of thinking about and acting on your ideals.
