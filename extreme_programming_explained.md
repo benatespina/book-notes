@@ -600,3 +600,11 @@ By Kent Beck.
 ### Chapter 22. Offshore development
 * Software development could stay on its current path of creeping increments. Without dramatic improvement, though, the global market for software will stagnate as more attractive investments are found in manufacturing and biotechnology.
 * The expanding market will more than make up for losses in any one location because of increased efficiency and multi-site development.
+
+### Chapter 23. The timeless way of programming
+* Tools and techniques change often, but they don't change a lot.
+* People, however, change slowly but deeply.
+* The challenge of XP is
+    * to encourage deep change,
+    * to renew individual values and mutual relationships
+    * to give software a seat at the table for the next fifty years.
