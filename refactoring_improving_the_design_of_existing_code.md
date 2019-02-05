@@ -37,3 +37,6 @@ TODO
 
 ## Chapter 4. Building tests
 TODO
+
+## Chapter 5: Introducing the catalog
+(It's only introductory chapter to talk about the format of the techniques)
