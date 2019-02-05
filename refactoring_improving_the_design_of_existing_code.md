@@ -28,3 +28,12 @@ By Martin Fowler.
 * Code should be obvious.
     * When someone needs to make a change, they should be able to find the code to be changed easily and to make the change quickly without introducing any errors.
 * The key to effective refactoring is recognizing that you go faster when you take tiny steps, the code is never broken, and you can compose those small steps into substantial changes.
+
+## Chapter 2. Principles in refactoring
+TODO
+
+## Chapter 3. Bad smells in code
+TODO
+
+## Chapter 4. Building tests
+TODO
