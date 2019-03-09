@@ -40,3 +40,10 @@ TODO
 
 ## Chapter 5: Introducing the catalog
 (It's only introductory chapter to talk about the format of the techniques)
+
+## Chapter 6: A first set of refactorings
+### Extract function
+### Inline function
+### Extract variable
+### Inline variable
+### Change function declaration
