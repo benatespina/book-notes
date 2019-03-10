@@ -77,7 +77,58 @@ By Alberto Brandolini.
 
 ## A deep dive into problem space
 ### 2. A closer look to the problem space
-#### Complexity is nutshell, or less
+#### Complex systems are non deterministic
+* A computer software MUST be predictable, even in the few cases where the outcomes are fooling us.
+    * When a deterministic system behaves in an unexpected way, it means that there is some hidden detail that we’re not considering.
+    * Once we find out the missing piece, we might be able to explain and eventually reproduce the problem.
+
+#### The role of expert
+* In complex environments experts don’t have all the answers.
+* They’ll have experience, analogies, ideas, and a network of peers to provide advices. But this won’t guarantee they’ll take the right decision.
+
+#### Strategies for decision making
+* In complex environments, the ability for the ones with the right information to take the right decision becomes crucial.
+* Self organization is the hyped term describing the ability of a group of people to respond quickly and collaboratively to a problem.
+
+#### Impediments to self organization
+* People won’t self organize around a system they don’t understand.
+* Without understanding of the system as a whole is very hard for people to self-organize.
+* People won’t self organize around a system they can’t influence”
+
 #### Organization silos
+* They focus on their own area of responsibility (apparently a good idea).
+* They progressively ignore what happens in other departments.
+* They minimize the amount of learning needed for newcomers.
+    * New hires don’t need to learn the whole thing in order to feel productive, just the portion of knowledge required to get their job done.
+* Silos maximize overall ignorance within an organization.
+* The really nasty trait if silos is their asymmetry: they’re easy to establish, and really hard to remove.
+
+#### Business flows are crossing the silos
+* The business flow crosses silos and expertise boundaries.
+* One single source of knowledge won’t be enough to solve problems that are spanning across multiple areas.
+
+#### Individual areas of expertise
+* There are tree different areas:
+    * Things I know really well.
+    * Things I know but someone knows better.
+    * Do not ask me about these things.
+
 #### Hierarchy
+* Hierarchies reinforce silos.
+    * People get usually hired, trained and promoted inside a silo, and their duties and reward are normally within a silo boundary.
+* Hierarchies partition responsibilities.
+    * But an organization can be way more complex than just the sum of its departments.
+* Problems within silo boundaries are addressed quicker than problems spanning multiple silos, or in the no man’s land.
+    * In fact, problems which aren’t contained within a clear area of responsibility will tend to chronicize.
+
+#### The clash between hierarchy and business flow
+* There are three main networks connecting people.
+    * The *hierarchy* as a top-down static structure, usually described by an organization-chart.
+    * The *informal structure*, the affinity and competence-based network connecting the people who you’d ask for help, on the many different topics.
+    * The *value creation network*, involving the people we have to collaborate with in order to deliver a service.
+* Only the second and the third are creating value, the hierarchy is not.
+
 #### The shape of the problem
+* *Hard to solve* because it requires an agreement by many different stakeholders.
+* *Hard to discuss*, because it involves many different actors, usually trying to escape blame by doing things right in their own silo.
+* *Hard to visualize*, because it involves many interdependent aspects in different areas of expertise.
