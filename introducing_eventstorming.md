@@ -132,3 +132,54 @@ By Alberto Brandolini.
 * *Hard to solve* because it requires an agreement by many different stakeholders.
 * *Hard to discuss*, because it involves many different actors, usually trying to escape blame by doing things right in their own silo.
 * *Hard to visualize*, because it involves many interdependent aspects in different areas of expertise.
+
+### 3. Pretending to solve the problem writing software
+#### It's not about 'delivering software'
+* Software development is a learning process, working code is a side effect.
+
+#### The illusion of the underlying model
+* Coding is actually the moment when ambiguities are discovered, in the form of a compile error, an unexpected behavior, or a bug.
+* Conversations tolerate ambiguities, but Coding won’t forgive them.
+
+#### Collecting nouns will lead you nowhere
+* A recurring problem in enterprise software development is knowledge unreliability, and a strategy for modeling (nouns and data first) that seems perfect for being fooled.
+
+#### The Product Owner fallacy
+* Often, teams are kept in isolation because the PO is taking care of all the necessary conversations with different stakeholders.
+* Product Owner becomes the only person who’s entitled of learning, while the development teams turns into a mere translation of requirements into code.
+* Everything starts to smell like the old Analysts vs Developers segregation that was so popular in Waterfall-like environment.
+
+#### The backlog fallacy
+* It is optimized for delivery.
+    * Having a cadence and releasing in small increments works great in order to provide a heartbeat and a measurable delivery progress.
+* Habits are great in providing a healthy routine. But they create a lot of resistance when you need to change them, or to do something different.
+* Repeatable weeks are optimized for planning and delivery, not for discovery.
+    * In fact discovery is more likely to happen when we break our habits and do something distinctively different.
+
+#### Embrace change
+* Doing a thing twice costs more than doing it right at first shot.
+* Iterative development doesn’t mean we shouldn’t try to start right.
+* I do my best to start in the right way just because iterations are expensive and the fewer, the better.
+    * Early discoveries :)
+    * Early constraints :( 
+
+#### What about emerging design?
+* Emergent design is a great tool to help you find your way in scenarios of great uncertainty.
+    * This is not the case when it comes to model business processes.
+* Apply emergent design principles to a problem that has already a solution, it’s flushing money in the toilet.
+
+#### Enter Domain-Driven Design
+* Among all approaches to software development, Domain-Driven Design is the only one that focused on language as the key tool for a deep understanding of a given domain’s complexity.
+
+#### The backlog fallacy (rewritten)
+* What I do like about iterations
+    * Frequent feedback: for a team needing to understand whether they’re on track or not, feedback is the highest value currency.
+* What I don’t like about iterations
+    * Iterations tend to repeat: team estimate, based on velocity. This is an implicit driver to make an iteration comparable to the previous one, maybe just to show that we improved a little.
+    * Little space for doing things differently: there is a strong driver to turn frequent delivery into a habit. This is powerful, but suboptimal.
+* Repeating things week after week is boring and boredom is the arch enemy of learning.
+
+#### Model splitting is broken
+* Splitting established model in a Database-centric architecture is among the most expensive refactorings in software development.
+* Quite often the risks are so hard to evaluate that initiatives are killed before the start.
+* Even teams embracing agile, these refactorings tend to float in the backlog in a loop of continuous procrastination, while bugs emerging from nobody knows where always get the top priority lane.
