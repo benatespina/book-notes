@@ -183,3 +183,162 @@ By Alberto Brandolini.
 * Splitting established model in a Database-centric architecture is among the most expensive refactorings in software development.
 * Quite often the risks are so hard to evaluate that initiatives are killed before the start.
 * Even teams embracing agile, these refactorings tend to float in the backlog in a loop of continuous procrastination, while bugs emerging from nobody knows where always get the top priority lane.
+
+### 4. Running a big picture workshop
+* It is one single large scale workshop that involves all the key people that we expect cooperate in order to solve critical business problems.
+* In this workshop:
+    * we'll build a behavioral model of an entire line of business, highlighting collaborations, boundaries, responsibilities and the different perspectives of the involved actors and stakeholders.
+    * we'll discover and validate the most compelling problem to solve.
+    * we'll highlight the major risks involved with the status quo, and possible new solutions.
+
+#### Key ingredients for a Big Picture EventStorming
+* Invite the right people.
+* A suitable location with unlimited modelling space.
+* One facilitator.
+
+#### Invite the right people
+* A good mix of knowledge and curiosity, but most of all you’ll need people that actually care about the problem.
+
+#### Room setup
+* It has a long straight wall where our paper roll can be placed as our modeling surface. 8 meters is the minimum. The more, the better.
+* There’s enough space for people to move by the modeling surface. People will need to see the forest and the trees.
+* Seats are not easily available. They’ll be needed after a couple of hours, but they’re just terrible at the beginning. Stacking them in a corner is usually a good enough signal.
+* The paper roll is put in place on the long straight wall.
+* There is a flip-chart or an equivalent tool to be used as a legend, for the workshop.
+* There is plenty of sticky notes and markers for everyone.
+* There’s enough healthy food and beverages to make sure that nobody will be starving.
+* There is a timer: some phases will need to be time-boxed. A visible clock might come in handy.
+
+#### Phase: kick-off
+* Start the workshop with a quick informal presentation round, in order to discover everyone’s background, attitude and goals, and to allow everyone to introduce themselves.
+* "We are going to explore the business process as a whole31 by placing all the relevant events along a timeline. We’ll highlight ideas, risks and opportunities along the way."
+* Take care of the people’s feelings. It’s not machinery, it’s people. You won’t regret it.
+
+#### Phase: Chaotic Exploration
+* We will name orange sticky notes Domain Events and place them along a timeline in order to represent our whole business flow.
+    * It has to be an orange sticky note.
+    * It needs to be phrased at past tense.
+    * It has to be relevant for the domain experts.
+* We will build our narrative as a sequence of related events.
+* Make the notation explicit from the beginning in a visible legend.
+
+#### Getting into a state of flow
+* It is the hardest moment for the facilitators, people will look at them for guidance, but their job is to support, not to actively lead.
+* An icebreaker, the person that places the first sticky note somewhere in the middle of your modeling surface, is your best ally.
+* Once the ice is broken, the workshop ignites.
+    * It turns into a chaotic, massively parallel activity where everybody is contributing to the model.
+
+#### Rephrasing to use past tense
+* Confidence and engagement are more important than precision or compliance to an arbitrary standard, at this stage.
+* Some people are tempted not to dig deeper into those phases, but we do care about the details.
+    * We provided an unlimited modeling surface exactly to be able to see these processes at the right level of detail.
+    * The right level is Domain Events.
+
+#### Growing the timeline organically
+* During the chaotic phase, there’s no common denominator on people’s behavior.
+    * Some might form small committees trying to agree on a common phrasing.
+        * Facilitator should politely step in and break the ring, since discussing to reach an agreement on every single sticky note, before writing it would kill workshop throughput and hide exactly the contradictions we want to explore.
+    * Some might work mostly alone, dropping the bulk of their personal expertise in a single strip of orange sticky notes, ignoring the surrounding world.
+    * Some might have no idea about what to write, and they’ll need to be reassured that guessing is a totally legitimate action in EventStorming.
+* I am not expecting many conversations at this stage.
+    * After breaking the committee circles, people will eventually start working on their own.
+* I expect to have locally ordered clusters in a disordered whole, and the timeline constraint to be broken in a few places.
+
+#### Phase: Enforcing the timeline
+* Experts may just take a marker and write down everything they know about the domain, and place everything on the wall in a single batch.
+* The goal is to make sure we are actually following the timeline: we’d like the flow of events to be consistent from the beginning to the end.
+
+#### Provide Structure
+* The main impediment to efficient sorting is the availability of empty space.
+    * This is a good moment to add more space.
+* If you can't, choose a shorting strategy.
+    * Pivotal Events
+    * Swimlanes
+    * Temporal Milestones
+    * Chapter Sorting
+    * The Usual Suspects
+
+#### Pivotal events
+* With Pivotal Events we start looking for the few most significant events in the flow.
+* My favorite tool here is a colored label tape, that I place below the pivotal event sticky note, as a boundary between the different phases of the business flow.
+* Usually 4-5 key events are enough to allow quicker sorting of the remaining events.
+
+#### Swimlanes
+* Separate the whole flow into horizontal swimlanes, assigned to given actors or departments.
+* It plays very well for a single process, or for a few distinct processes that tend to happen in parallel to the main business flow.
+
+#### Temporal milestones
+* It is the best choice when there are many concurrent processes or too much misalignment about what comes first.
+* Make the temporal frames roughly visible on the surface so that everybody can place their items more or less where they belong.
+* Place blue sticky notes on top of the modeling surface with some typical time indicator like *1 year before*, *6 month before* or *1 month before*.
+
+#### Chapter sorting
+* We run a quick extraction round of the key Chapters of the whole business story. This will usually lead to 15-25 chapters (usually I write them on larger yellow stickies).
+* We quickly sort the chapters on a different surface (often a window), resulting in a skeleton of the desired structure of the flow.
+* We then apply the chapters structure on the main flow and remodel everything accordingly.
+
+#### Combining multiple strategies
+* A single strategy is not enough to rule the complexity of the whole thing, and that you’ll have to combine different approaches.
+
+#### Highlight inconsistencies with Hot Spots
+* Enforcing global consistency won’t happen without frictions.
+* The facilitator should look for places where the discussion is getting hot and marking them with a purple sticky note (Hot Spots).
+* HotSpots capture comments and remarks about issues in the narrative, and I am expecting to find quite a few of them.
+
+#### People and Systems
+* Little ellow stickies for people.
+* Large pink stickies for external systems.
+
+#### Fuzziness in action
+* They allow every participant to be part of the discussion, without a specific background.
+* Adding significant people adds more clarity, but the goal is to trigger some insightful conversation: where the behavior depends on a different type of user, where special actions need to be taken, and so on.
+
+#### External systems
+* It is a piece of the whole flow which is outside of our control.
+
+#### Phase: Explicit walk-through
+* To enforce consistency during this phase is to ask someone to walk through the sequence of events, while telling the story that connects them.
+* It is a good idea to change the narrator, in a relay race fashion, once we reach pivotal events “and this is where Mary’s team takes over” offering the possibility to see the experts in action in their own territory.
+* Facilitator should make sure that the spoken storytelling is aligned with the model: missing events or systems can be added on the fly.
+
+#### Manage discussions
+* Some discussions cannot be solved during the workshop.
+* When conversation is getting non-conclusive, I mark it with a Hot Spot and move on.
+* Some other discussions are interesting for everybody, and the workshop might be the one chance in a lifetime to get a long awaited clarification.
+
+#### Reverse narrative
+* Pick an event from the end of the flow, then look for the events that made it possible.
+    * The event must be consistent: it has to be the direct consequence of previous events with no magic gaps in between.
+* If some step or piece of information is missing, we’ll need to add the corresponding event or sub-flow to our model.
+* Every other event needs to be consistent as well, so you may want to repeat it ad libitum.
+
+#### Picking candidate events
+* Terminal events (the ones at the end of the flow that seem to "settle everything").
+* Pivotal events (the ones closing a specific phases) that often cover a checklist-like structure.
+
+#### Looking for key impediments
+* Offer a 10-15 minutes time-box to add *Problems* and *Opportunities* to our model.
+* Problems are represented with our familiar Hotspot purple stickies.
+* Opportunities with an optimistic green stickies.
+
+#### Arrow voting
+* Every workshop participants has the possibility to cast two votes.
+    * Votes are little blue stickies with an arrow.
+* Arrow should point towards a purple problem or a green opportunity. 
+    * Everybody should be free to choose their voting criteria.
+    * Votes could be pointing to the same target or to two independent targets.
+* Voting happens more or less simultaneously, no voting catwalk.
+
+#### Should we always be voting?
+* Sometimes it should not be called:
+    * Wrong people mix in the room.
+        * A single partisan perspective could be a trusted source of an opinion, but not a system wide diagnosis.
+    * Wrong scope.
+        * Exploring the whole was beyond our reach. We might vote, but the real key constraint might be hidden somewhere else.
+    * Non-disclosure constraints.
+        * In a pre-sales requirements exploration scenario, an organization might be open to exploration, but not to explore their vulnerabilities.
+    * Just too early.
+        * A startup in inception phase doesn't have a real impediments yet, just a list of assumptions to be challenged and questions to be answered.
+
+### 5. Playing with value - part 1
+(It is not written yet).
