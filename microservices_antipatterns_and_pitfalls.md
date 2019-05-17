@@ -85,7 +85,54 @@ By Mark Richards.
 * Too much service choreography is that it can impact the overall reliability and robustness of your system.
 
 ## Chapter 6. Developer without a cause pitfall
-### Understanding Business Drivers
+### Understanding business drivers
 * Understanding the business drivers behind choosing microservices is the key to avoiding this pitfall.
     * The reason for moving to microservices is to achieve better time to market via an effective deployment pipeline.
     * The reason for moving to microservices is to increase the overall reliability and robustness of the application.
+
+## Chapter 7. Jump on the bandwagon pitfall
+### Advantages and disadvantages
+* Deployment, testability and change control, modularity, scalability, organizational change, performance, reliability, devOps.
+
+### Other architecture patterns
+* Service-Based Architecture
+* Service-Oriented Architecture
+* Layered Architecture
+* Microkernel Architecture
+* Space-Based Architecture
+* Event-Driven Architecture
+* Pipeline Architecture
+
+## Chapter 8. The static contract pitfall
+### Header versioning
+* Protocol-aware contract versioning because the information about the version of the contract you are using is contained within the header of the remote access protocol.
+* Regardless of the messaging standard, the version property is a string value that needs to match exactly with what the service is expecting, including being case-sensitive. For this reason it’s generally not a good idea to supply a default version if the version number cannot be found in the header.
+
+### Schema versioning
+* Protocol-agnostic contract versioning because the version identification is completely independent of the remote access protocol.
+* The big advantage of this technique is that the schema (including the version) is independent of the remote access protocol.
+* But a lot of disadvantages:
+    * You must parse the actual payload of the message to extract the version number.
+    * The schemas can get quite complex, making it difficult to do automated conversions of the schema.
+
+## Chapter 9. Are we there yet pitfall
+### Measuring latency
+* Measuring the remote access latency under load in your production environment (or production-like environment) is critical for understanding the performance profile of your application.
+
+## Chapter 10. Give it a rest pitfall
+* There are two types of messaging standards you should be aware of when considering using messaging for your microservices architecture.
+    * Platform-specific standards and platform-independent standards: JMS and MSMQ.
+    * Platform-independent standard: AMQP.
+
+### Asynchronous requests
+* The first consideration for using messaging within your microservices architecture is asynchronous communication.
+    * With Asynchronous requests the service caller does not need to wait for a response from the service when making a request.
+* Not only does asynchronous processing increase overall performance, but it also adds an element of reliability to your system.
+* Performance is increased because callers don’t have to wait for a response if none is needed.
+
+### Broadcast capabilities
+* It is not available within REST is the capability to broadcast a message to multiple services.
+
+### Transacted requests
+* The messages are sent to multiple queues or topics within the context of a transaction, the messages are not actually received by the services until the sender does a commit on that transaction.
+* It is a good idea to consider using transacted messaging any time a service consumer needs to orchestrate multiple remote requests.
