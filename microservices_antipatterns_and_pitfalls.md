@@ -83,3 +83,9 @@ By Mark Richards.
     * Inter-service communication.
 * It decreases the overall performance of your application since each call to another service is a remote call.
 * Too much service choreography is that it can impact the overall reliability and robustness of your system.
+
+## Chapter 6. Developer without a cause pitfall
+### Understanding Business Drivers
+* Understanding the business drivers behind choosing microservices is the key to avoiding this pitfall.
+    * The reason for moving to microservices is to achieve better time to market via an effective deployment pipeline.
+    * The reason for moving to microservices is to increase the overall reliability and robustness of the application.
