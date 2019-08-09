@@ -55,3 +55,39 @@ By Ajay Kumar.
 
 ### Dealing with create and delete methods
 * CRUD-based interface is just fine when your application is not too complex, or you are not going to maintain or evolve it in the future.
+
+## Module 4: Segregating commands and queries
+### Commands in CQS vs commands in CQRS
+* In CQS all methods in a class should be either commands or queries.
+* In CQRS it is an explicit representation of what needs to be done in the application.
+* The concepts are interconnected.
+
+### Commands and queries in CQRS
+* Commands:
+    * tell the application to do something.
+    * imperative tense.
+    * should use ubiquitous language.
+* Queries:
+    * ask the application about something.
+    * start with "Get".
+* Events:
+    * inform external applications.
+    * past tense.
+
+### Commands and queries in the onion architecture
+* It is someone else, not our application, that raises the commands.
+    * That would be the push moodel.
+* It is us, our application, that raises the events.
+    * That is the so-called pull model.
+* The classes inside the core domain should not refer to the outside world.
+
+### Commands vs DTOs
+* Commands and DTOs tackle different problems.
+* Commands: serializable method calls.
+* DTOs: data contracts and backward compatibility.
+* To use commands as DTOs is the same that to use entities as DTOs.
+    * Hinder refactoring.
+* It is much easier to implement the mapping between the two than to try to lump all these reponsibilities into the same class.
+* It is fine not to have DTOs if you do not need BC.
+    * A single client which you develop yourself.
+    * Can deploy both the API and the client simultaneously.
