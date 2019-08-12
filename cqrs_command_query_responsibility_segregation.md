@@ -91,3 +91,16 @@ By Ajay Kumar.
 * It is fine not to have DTOs if you do not need BC.
     * A single client which you develop yourself.
     * Can deploy both the API and the client simultaneously.
+
+## Module 5: Implementing decorators upon command and query handlers
+### Decorator pattern
+* It is a class or a method that modifies the behaviour of an existing class or method without changing its public interface.
+* It introduces cross-cutting concerns.
+* It avoids code duplication.
+* It adheres SRP.
+* Command handlers manage business use cases and decorators technical issues.
+
+### Command and query handlers best practices
+* Put command and query handlers inside their respective commands and queries.
+* Don't reuse command handlers.
+    * Avoid code duplication creating domain services.
