@@ -104,3 +104,25 @@ By Ajay Kumar.
 * Put command and query handlers inside their respective commands and queries.
 * Don't reuse command handlers.
     * Avoid code duplication creating domain services.
+
+## Module 6: Simplifying the read model
+### Separation of the domain model
+* Same domain model for reads and writes:
+    * Domain model overcomplication.
+    * Bad query performance.
+* There is no need for a domain model within the read side.
+* No data modifications so:
+    * No neeed in encapsulation.
+    * No need in DDD.
+    * No need in abstractions.
+        * No need ORMs.
+        * Can use database-specific features to optimize the performance.
+
+### The read model and the onion architecture
+* Queries do not have to use DTOs.
+    * DTOs are infrastructure details.
+* If queries are no part of the onion, also they are no part of the domain model.
+* Domain contains:
+    * Model.
+    * Events.
+    * Commands.
