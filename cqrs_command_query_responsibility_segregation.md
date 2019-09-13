@@ -126,3 +126,38 @@ By Ajay Kumar.
     * Model.
     * Events.
     * Commands.
+
+## Module 7: Introducing a separate database for queries
+### Meet scalability
+* It is rare to shard data in the commands.
+* Usually, is more than enough to put multiple databases for reads.
+
+## Separation at the data level in the real world
+* You do not need to maintain a separate database.
+    * It could be an indexed view in your relational database.
+    * It could be database replication using master node for writes and replicas for reads.
+    * It could be something like Elasticsearch.
+
+## Designing a database for queries
+* Replicas have the same structure than the master so they do not fit with the reads requirements.
+
+## Creating a database for queries
+* The only way to fulfill the needs of reads and writes sides is if we apply different architectural approaches to them.
+    * Database for commands complies with the third normal form.
+    * Database for queries is denormalized (first normal form).
+* Denormalization minimizes the amount of joins.
+
+## Scalability
+* It is easy to scale the read side creating as many databases for reads you need.
+    * The state is immutable.
+    * The are not exist any side-effects.
+* To scale the write side is not as easy as read side because of side-effects.
+* We can have more than one read model.
+    * Web read side.
+    * Mobile read side.
+
+## A word of caution regarding the database for reads
+* The sync between two databases introduces quite a lot of complexity.
+    * Eventual consistency.
+* In most cases, you are just fine without a separate database for reads.
+* CQRS can be just as effective with only a single database. 
