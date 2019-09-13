@@ -132,22 +132,22 @@ By Ajay Kumar.
 * It is rare to shard data in the commands.
 * Usually, is more than enough to put multiple databases for reads.
 
-## Separation at the data level in the real world
+### Separation at the data level in the real world
 * You do not need to maintain a separate database.
     * It could be an indexed view in your relational database.
     * It could be database replication using master node for writes and replicas for reads.
     * It could be something like Elasticsearch.
 
-## Designing a database for queries
+### Designing a database for queries
 * Replicas have the same structure than the master so they do not fit with the reads requirements.
 
-## Creating a database for queries
+### Creating a database for queries
 * The only way to fulfill the needs of reads and writes sides is if we apply different architectural approaches to them.
     * Database for commands complies with the third normal form.
     * Database for queries is denormalized (first normal form).
 * Denormalization minimizes the amount of joins.
 
-## Scalability
+### Scalability
 * It is easy to scale the read side creating as many databases for reads you need.
     * The state is immutable.
     * The are not exist any side-effects.
@@ -156,8 +156,44 @@ By Ajay Kumar.
     * Web read side.
     * Mobile read side.
 
-## A word of caution regarding the database for reads
+### A word of caution regarding the database for reads
 * The sync between two databases introduces quite a lot of complexity.
     * Eventual consistency.
 * In most cases, you are just fine without a separate database for reads.
-* CQRS can be just as effective with only a single database. 
+* CQRS can be just as effective with only a single database.
+
+## Module 8: Synchronizing the commands and queries databases
+### State-driven projections
+* Synchronization and projections are synonyms in CQRS.
+* Use flags in your domain model to knows the sync status.
+* Use database triggers only if you do not control the source code.
+
+### Synchronous state-driven projections
+* Application does the projection.
+* Increases the processing time.
+* All changes are immediately consistent.
+* Implementation example: indexed view in the same database.
+
+### Event-driven projections
+* Domain events drive the changes.
+* Subscribe to domain events.
+* Scales really well.
+* Can use a message bus.
+* Cannot rebuild the read database.
+
+### Consistency
+* Having two databases introduces latency.
+* May end up with duplicate records.
+* You will still gain a lot of benefits even with a single database.
+
+### Eventual consistency
+* The real world is inherently asynchronous and eventually consistent.
+
+### Versioning
+* Eventual consistency is problematic when the cost of making a decision based on the stale data is high.
+* You can keep a version of an aggregate in both the read and write databases, and then if you see that the user tries to update the stale record, show them an error.
+    * Optimistic concurrency control.
+
+### CQRS and the CAP theorem
+* Choose consistency and availability at the expense of partitioning for writes.
+* Choose availability and partitioning at the expense of consistency for reads. 
