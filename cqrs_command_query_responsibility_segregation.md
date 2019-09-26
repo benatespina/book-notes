@@ -197,3 +197,23 @@ By Ajay Kumar.
 ### CQRS and the CAP theorem
 * Choose consistency and availability at the expense of partitioning for writes.
 * Choose availability and partitioning at the expense of consistency for reads. 
+
+## Module 9: CQRS best practices and misconceptions
+### CQRS and Event Sourcing
+* CQRS can provide a lot of benefits without ES.
+* CQRS does not require ES.
+* ES without CQRS is a less scalable solution.
+
+### Using commands and queries from handlers
+* It is the client that trigger commands, not our system.
+* It cannot create subsequent commands on its own.
+* If you need to reuse some code between command handlers, extract it into a separate class, such as a domain service.
+* It is not so dangerous to execute query inside the query handler but it is not recommended.
+
+### CQRS VS the specification pattern
+* CQRS
+    * Separate domain model
+    * Loose coupling
+* Specifications
+    * Single domain model 
+    * The DRY principle
