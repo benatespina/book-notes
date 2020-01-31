@@ -74,7 +74,7 @@ been fully instantiated.
 * No service will need the service locator to retrieve services.
 * We could use a service container as a service locator to retrieve a controller from. All the other service instantiation logic that’s needed to produce the controller objects can stay behind the scenes, in private methods.
 
-## 3 Creaing other objects
+## 3 Creating other objects
 ### 3.1 Require the minimum amount of data needed to behave consistently
 * Constructor should be used to protect a domain invariants.
 
