@@ -156,3 +156,59 @@ other client than the test itself.
 #### 3.13.3 Use property fillers when needed
 * DTO doesn’t protect its internals anyway so does not exist any problem.
 * User for example: `fromFormData`.
+
+## 4 Manipulating objects
+### 4.1 Entities: Identifiable objects that track changes and record events
+* An entity may change over time, but it should always be the same object that under- goes the change.
+* An entity needs to be identifiable.
+* Entities are mutable objects.
+* The methods that change the entity’s state should have a void return type and their names should be in the imperative form.
+* These methods have to protect the entity against ending up in an invalid state.
+* The entity shouldn’t expose all its internals to test what’s going on inside. Instead, an entity should keep a change log and expose that, so other objects
+can find out what has changed about it, and why.
+
+### 4.2 Value objects: Replaceable, anonymous, and immutable values
+* Value objects are not identifiables.
+* We don’t care about the exact instance we’re working with, since we don’t need to track the changes that happen to a value object.
+* A value object is any immutable object that wraps primitive-type values.
+
+### 4.3 Data transfer objects: Simple objects with fewer design rules
+* Avoid getters and setters in favour public final properties to avoid unit tests.
+
+### 4.4 Prefer immutable objects
+* Design every object that is not an entity to be immutable.
+
+### 4.5 A modifier on an immutable object should return a modified copy
+* Immutable objects can have methods that could be considered modifiers, but they don’t modify the state of the object, returns a copy of the object.
+* Use the constructor of the object, to create the desired copy, like the plus() method in the next listing.
+* Useful for immutable objects with mul- tiple properties, is to create an actual copy of the object using the clone operator, and then make the desired change to it.
+
+### 4.6 On a mutable object, modifier methods should be command methods
+* They have a name in the imperative form.
+* They’re allowed to make a change to the object’s internal data structures.
+* They don’t return anything.
+
+### 4.7 On an immutable object, modifier methods should have declarative names
+* Good name for modifier methods on immutable objects, you can fill in the following template: "I want this ..., but ...".
+    * I want this position, but n steps to the left: `toTheLeft`
+* You may often end up using the word "with," or using so called participle adjectives in the past tense.
+
+### 4.8 Compare whole objects
+* Use inmutable objects facilitates unit testing without exposing getters.
+
+### 4.9 When comparing immutable objects, assert equality, not sameness
+* When comparing integers, we don’t compare their memory locations, only their value.
+* Use the same approach to compare immutable objects: assertEquals.
+* If you need to compare two objects outside tests, implement equals method.
+
+### 4.10 Calling a modifier method should always result in a valid object
+* In order to reuse the validation logic, don't use clone, but always to go through the constructor.
+
+### 4.11 A modifier method should verify that the requested state change is valid
+* Make sure that every one of your methods prevents against making invalid state transitions.
+
+### 4.12 Use internally recorded events to verify changes on mutable objects
+* To test for changes in a mutable object is to record events inside the object that can later be inspected.
+
+### 4.13 Don't implement fluent interfaces on mutable objects
+* For immutable objects, having a fluent interface is not a problem.
