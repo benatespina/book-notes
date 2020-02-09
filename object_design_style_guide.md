@@ -3,7 +3,22 @@
 By Matthias Noback.
 
 ## 1 Programming with objects: A primer
-(TODO)
+* Objects can be instantiated based on a given class.
+* A class defines properties, constants, and methods.
+* Private properties and methods are accessible to instances of the same class. Public properties and methods are accessible to any client of an object.
+* An object is immutable if all of its properties can’t be modified, and if all
+objects contained in those properties are immutable themselves.
+* Dependencies can be created on the fly, fetched from a known location, or
+injected as constructor arguments (which is called dependency injection).
+* Using inheritance you can override the implementation of certain methods of a parent class. An interface can declare methods but leave their implementations entirely to a class that implements the interface.
+* Polymorphism means that code can use another object’s methods as defined by
+its type (usually an interface), but that the runtime behavior can be different
+depending on the specific instance that is provided by the client.
+* When an object assigns other objects to its properties, it’s called composition.
+* Unit tests specify and verify the behaviors of an object.
+* While testing, you may replace an object’s actual dependencies with stand-ins
+known as test doubles (such as stubs and mocks).
+* Dynamic arrays can be used to define lists or maps without specifying types for its keys and values.
 
 ## 2 Creating services
 ### 2.1 Two types of objects
