@@ -212,3 +212,58 @@ can find out what has changed about it, and why.
 
 ### 4.13 Don't implement fluent interfaces on mutable objects
 * For immutable objects, having a fluent interface is not a problem.
+
+## 5 Using objects
+### 5.1 A template for implementing methods
+```php
+[scope] function methodName(type name, ...): void|[return-type] {
+    [preconditions checks]
+    [failure scenarios]
+    [happy path]
+    [postcondition checks]
+    [return void|specific-return-type]
+}
+```
+
+#### 5.1.1 Precondition checks
+* Any number of checks, and throw exceptions when anything looks off.
+* We can use assertion functions.
+* Some of these precondition checks may only be needed because the type system of the language lacks some features.
+* To avoid checks, use "replace primitive with object" refactor.
+
+#### 5.1.2 Failure scenarios
+* If something goes wrong in the method after the precondition checks, you should throw a different kind of exception.
+* The type of the exception should indicate that an error condition occurred that could only be detected at runtime.
+
+#### 5.1.3 Happy path
+* It is where nothing is wrong, and the method is just performing its task.
+
+### 5.1.4 Postcondition checks
+* They can be added to a method to verify that the method did what it was supposed to do.
+* In practice, most methods don’t need postcondition checks.
+* Useful technique if you are dealing with legacy code, with lots of implicit type casting and no assertions.
+* You could get rid of a method’s postcondition checks, just like you can remove pre- condition checks, by promoting primitive-type values to proper objects and returning those from your method.
+* Another option is to wrap the method with postcondition checks in a new method that performs these checks.
+
+#### 5.1.5 Return value
+* As soon as you know what you will return, return it right away instead of keeping the value around, skipping a few more if clauses, and then returning it.
+
+### 5.2 Some rules for exceptions
+#### 5.2.1 Use custom exception classes only if needed
+* If you want to catch a specific exception type higher up.
+* If there are multiple ways to instantiate a single type of exception
+* If you want use named constructors for instantiating the exception
+
+#### 5.2.2 Naming invalid argument or logic exception classes
+* Exception class names don’t need to have “Exception” in them.
+* For instance: `InvalidEmailAddress`, `InvalidTargetPosition`, or `InvalidStateTransition`.
+
+#### 5.2.3 Naming runtime exception classes
+* They communicate how the system tried to perform the requested job, but couldn’t finish it successfully.
+* For example, `CouldNotFindProduct`, `CouldNotStoreFile`, or `CouldNotConnect`.
+#### 5.2.4 Use named constructors to indicate reasons for failure
+* Use the name to indicate the ingredients needed to instantiate the exception.
+* Use the method name to indicate the reason why something is wrong.
+
+#### 5.2.5 Add detailed messages
+* With named constructors will set up the exception’s message.
