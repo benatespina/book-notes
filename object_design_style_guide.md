@@ -282,3 +282,73 @@ can find out what has changed about it, and why.
 
 #### 5.2.5 Add detailed messages
 * With named constructors will set up the exception’s message.
+
+## 6 Retrieving information
+### 6.1 Use query methods for information retrieval
+* The have specific return type, and it’s not allowed to produce any side effects.
+* It’s better to have safe methods that can be called any time:
+    * Via command/query separation principle (CQS).
+    * Make your objects immutable.
+
+```php
+   final class Counter
+   {
+       private int count = 0;
+       public function incremented(): Counter
+       {
+           copy = clone this;
+           copy.count++;
+           
+           return copy;
+       }
+    
+       public function currentCount(): int
+       {
+           return this.count;
+       }
+   }
+```
+* A modifier method returns a copy of the whole object, and once you have that copy, you can ask it questions.
+
+### 6.2 Query methods should have single-type return values
+* Avoid returning multiple types.
+* Alternatives to return nullable types:
+    * throw an exception
+    * return an object that can represent the null case
+    * return a result of the same type. For instance empty array
+* You can show the uncertainty in the name of the method, for example `findById` instead of `getById`.
+
+### 6.3 Avoid query methods that expose internal state
+* The only type of object that could be designed as a JavaBean is a DTO.
+* Instead of expose getters for clients to do somme tasks, expose method returning task result.
+* Don't use `getItemCount()` or `countItems()` because these method names sound like commands, telling the object to do something. Use `itemCount()`.
+* Make the method smarter, and adapt it to the actual need of its clients.
+* Move the call inside the object, letting it make its own decisions.
+* Avoid use `get` prefix for getters because method isn't a command method, but that it simply provides a piece of information.
+
+### 6.4 Define specific methods and return types for the queries you want to make
+* The “answer” class, should be designed to be as useful as possible for the client that needs it.
+* Potentially, this class can be reused at other call sites, but it doesn’t have to be.
+
+### 6.5 Define an abstraction for queries that cross system boundaries
+* Abstraction should be a service interface instead of a service class.
+* Abstraction should leaving out the implementation details.
+* Abstraction will make it possible to run your code in a test scenario.
+
+### 6.6 Use stubs for test doubles with query methods
+* An abstraction is a useful extension point. You can easily change the implementation details of how the answer will be found.
+* Testing logic will be easier.
+* This makes the test deterministic and therefore stable.
+* Naming test methods:
+    * Test method names describe object behaviors. The best description is an actual sentence.
+    * Because they are sentences, test method names will be longer than regular method names. It should still be easy to read them (so use snake case instead).
+    * Good rule is to start methods with `it_`, `when_` or `if_`.
+
+* A fake is one kind of test double, which can be characterized as showing "somewhat complicated".
+* A stub is a test double that just returns hardcoded values. Use to replace real service.
+* Don't make any assertions about the number of calls made to Stubs or the order in which those calls are made. (In query methods).
+* Dummies are test doubles that don't return anything meaningful and are only there to be passed as unused arguments.
+
+### 6.7 Query methods should use other query methods, not command methods
+* A chain of query calls won't contain a call to a command method.
+* Queries are supposed to have no side effects, and calling a command method somewhere in the chain will violate that rule.
