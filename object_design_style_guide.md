@@ -352,3 +352,34 @@ can find out what has changed about it, and why.
 ### 6.7 Query methods should use other query methods, not command methods
 * A chain of query calls won't contain a call to a command method.
 * Queries are supposed to have no side effects, and calling a command method somewhere in the chain will violate that rule.
+
+## 7 Performing tasks
+### 7.1 Use command methods with a name in the imperative form
+* Use commands for performing tasks returning void.
+
+### 7.2 Limit the scope of a command method, and use events to perform secondary tasks
+Advantages:
+* You can add even more effects without modifying the original method.
+* The original object will be more decoupled because it doesn’t get dependen-
+cies injected that are only needed for effects.
+* You can handle the effects in a background process if you want.
+
+### 7.3 Make services immutable from the outside as well as on the inside
+* If your services are immutable shouldn’t need to be shared, they can but they don’t have to.
+
+### 7.4 When something goes wrong, throw an exception
+* When something goes wrong, don’t return a special value to indicate it; throw an exception instead.
+
+### 7.5 Use queries to collect information and commands to take the next steps
+* When a chain of calls starts with a command method, it’s possible that you’ll encounter a call to a query method down the line.
+
+### 7.6 Define abstractions for commands that cross system boundaries
+* It’s generally a good idea to start with the abstraction and leave the generalization until you’ve seen about three cases that could be simplified by making the interface and object types involved more generic.
+
+### 7.7 Only verify calls to command methods with a mock
+* Don't mock query methods because they do not produce side-effects.
+* In a unit test, you shouldn’t verify the number of calls made to them.
+* If you decide to call a method twice instead of remembering its result in a variable, the test won’t break.
+* When a command method makes a call to another command method, you may want to mock or create a spy of the latter.
+    * With mock: there are no regular assertions at the end of this test method, because the mock object itself will verify that our expectations were met. The test framework will ask all mock objects that were created for a single test case to do this.
+    * With spy: use assertions combined with spy; a spy will remember all method calls that were made to it, including the arguments used.
