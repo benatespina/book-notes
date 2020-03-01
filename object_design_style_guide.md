@@ -360,8 +360,7 @@ can find out what has changed about it, and why.
 ### 7.2 Limit the scope of a command method, and use events to perform secondary tasks
 Advantages:
 * You can add even more effects without modifying the original method.
-* The original object will be more decoupled because it doesn’t get dependen-
-cies injected that are only needed for effects.
+* The original object will be more decoupled because it doesn’t get dependencies injected that are only needed for effects.
 * You can handle the effects in a background process if you want.
 
 ### 7.3 Make services immutable from the outside as well as on the inside
@@ -383,3 +382,19 @@ cies injected that are only needed for effects.
 * When a command method makes a call to another command method, you may want to mock or create a spy of the latter.
     * With mock: there are no regular assertions at the end of this test method, because the mock object itself will verify that our expectations were met. The test framework will ask all mock objects that were created for a single test case to do this.
     * With spy: use assertions combined with spy; a spy will remember all method calls that were made to it, including the arguments used.
+
+## 8 Dividing responsibilities
+### 8.1 Separate write models from read models
+* Never pass an entity that can be modified to a client that isn’t allowed to modify it.
+* Clients that solely use an entity to retrieve information should use a dedicated read model instead of a write model.
+
+### 8.2 Create read models that are specific for their use cases
+* We may create any number of read models that correspond to each of the application’s specific use cases.
+
+### 8.3 Create read models directly from their data source
+* Creating read models directly from the write model’s data source is usually pretty efficient in terms of runtime performance.
+* It’s also an efficient solution in terms of development and maintenance costs.
+* This solution will be less efficient if the write model changes often, or if the raw data can’t easily be used as-is and needs to be interpreted first.
+
+### 8.4 Build read models from domain events
+* In order to avoid to do calculations in your queries, use domain events to generate this data.
