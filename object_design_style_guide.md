@@ -398,3 +398,49 @@ Advantages:
 
 ### 8.4 Build read models from domain events
 * In order to avoid to do calculations in your queries, use domain events to generate this data.
+
+## 9 Changing the behavior of services
+### 9.1 Introduce constructor arguments to make behavior configurable
+* Use a replaceable constructor argument when you want to influence the behavior of a service.
+
+### 9.2 Introduce constructor arguments to make behavior replaceable
+(nothing relevant except the title)
+
+### 9.3 Compose abstractions to achieve more complicated behavior
+* Using object composition you can compose multiple concrete instances into more complicated behavior.
+
+### 9.4 Decorate existing behavior
+* To avoid the copy in every implementation, add the behavior on top of any existing behavior.
+* It is also often used when the cost of using the real service is somewhat high.
+
+### 9.5 Use notification objects or event listeners for additional behavior
+* The advantage of using an event dispatcher is that it enables you to add new behavior to a service without modifying its existing logic.
+* A disadvantage of using an event dispatcher is that it has a very generic name.
+
+### 9.6 Don’t use inheritance to change an object’s behavior
+* Subclass and parent class become tied together.
+    * Changing implementation details that would normally be hidden behind the public interface of the class could now break the implementation of a subclass. Consider what would happen if that protected method’s name was changed, or if it got an extra required parameter.
+* Subclasses can override protected but also public methods.
+    * Subclasses gain access to protected properties and their data types, which have so far been internal information. In other words, a lot of the internals of the object are now exposed.
+* Template pattern. Expose only one method to implement and make others final.
+    * We may not have the downsides of inheritance anymore.
+    * We don’t have the endless possibilities of using composition either.
+
+#### 9.6.1 When is it okay to use inheritance?
+* It should only be used to define a strict hierarchy of types.
+* Inheritance is usually used for code reuse, and composition is a much more powerful form of code reuse.
+* Entities or value objects don’t support dependency injection, so you can’t really achieve code reuse via that road.
+    * Traits aren’t inheritance, because the name of the trait doesn’t end up becoming part of the class’s hierarchy, like a parent class or an interface would.
+    * A trait is plain code reuse a compiler-level copy/paste of code.
+
+### 9.7 Mark classes as final by default
+* Mark services as final.
+    * It is more clear to the client that the class isn’t meant to be extended, its methods aren’t meant to be overridden.
+    * It will force users to look for better ways to change its behavior.
+* Mark entities and value objects as final.
+    * It would be weird to override part of the behavior of these classes by extending from them.
+    * If you’ve learned something about the domain that makes you want to change the behavior of an entity, you shouldn’t create a subclass to change its behavior, but change the entity itself.
+    * The only exception to the rule is when you want to declare a hierarchy of objects.
+
+### 9.8 Mark methods and properties private by default
+* By closing down the class definition itself, you can design some really strong objects.
