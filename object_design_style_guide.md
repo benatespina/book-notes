@@ -444,3 +444,58 @@ Advantages:
 
 ### 9.8 Mark methods and properties private by default
 * By closing down the class definition itself, you can design some really strong objects.
+
+## 10 A field guide to objects
+### 10.1 Controllers
+* Front controller is where all the requests come in. P.E. index.php, DispatcherServlet.
+* Console commands and web controllers are the same but from different envs.
+* A front controller calls it, and it’s therefore one of the entry points for the graph of services and their dependencies.
+* It contains infrastructure code that reveals what the delivery mechanism is.
+* It makes calls to an application service or a read model repository (or both).
+
+### 10.2 Application services
+* It represents the task to be performed.
+* It contains no infrastructure code; that is, it doesn’t deal with the web
+request itself, or SQL queries, or the filesystem, etc.
+* It describes a single use case that the application should have. It will often correspond one-to-one with a feature request from a stakeholder. For example, it should be possible to add a product to the catalog, to cancel an order, to send a delivery note to a customer, etc.
+* The advantage of using a dedicated command object is that it’s easy to instantiate it based on deserialized string data, like a JSON or XML request body. It also works well with form libraries, which can map submitted data directly onto command DTO properties.
+
+### 10.3 Write model repositories
+* It offers methods for retrieving an object from storage and for saving it.
+* Its interface hides the underlying technology that’s been used.
+
+### 10.4 Entities
+* Just like any object, an entity fiercely protects itself against ending up in an invalid state. 
+* Many entities in the wild shouldn’t be considered proper entities, according to this definition.
+* It has a unique identifier.
+* It has a life cycle.
+* It will be persisted by a write model repository and can later be retrieved from it.
+It uses named constructors and command methods to provide the user with
+ways to instantiate it and manipulate its state.
+* It produces domain events when it gets instantiated or modified.
+
+
+### 10.5 Value objects
+* It’s immutable.
+* It wraps primitive-type data.
+* It adds meaning by using domain-specific terms.
+* It imposes limitations by means of validation.
+* It acts as an attractor of useful behavior related to the concept.
+
+### 10.6 Event listeners
+* It’s an immutable service, with its dependencies injected.
+* It has at least one method which accepts a single argument that is a
+domain event.
+
+### 10.7 Read models and read model repositories
+* It has only query methods and is therefore immutable.
+* It’s designed specifically for a certain use case.
+* All the data needed (and no more) becomes available the moment you
+retrieve the object.
+
+### 10.8 Abstractions, concretions, layers, and dependencies
+* Controllers are concrete.
+* Application services are concrete.
+* Entities and value objects are concrete.
+* Repositories (for write and read models) consist of an abstraction and at least one concrete implementation.
+* The types of objects described in this chapter naturally belong to layers. A layer- ing system where code only depends on code in lower layers offers a way to decouple domain and application code from the infrastructural aspects of your application.
