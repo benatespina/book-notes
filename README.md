@@ -9,6 +9,7 @@ Inspired by [Keyvan Akbary](https://github.com/keyvanakbary)'s **[book notes](ht
 * [Microservices AntiPatterns and Pitfalls](microservices_antipatterns_and_pitfalls.md)
 * [Object Design Style Guide](object_design_style_guide.md)
 * [Refactoring: Improving the Design of Existing Code](refactoring_improving_the_design_of_existing_code.md)
+* [Release It!](release_it.md)
 * [Versioning in an Event Sourced System](versioning_in_an_event_sourced_system.md)
 
 ## Licensing Options
