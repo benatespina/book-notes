@@ -23,3 +23,7 @@ By Michael T. Nygard.
 * The ivory-tower architect most enjoys an end-state vision of ringing crystal perfection, but the pragmatic architect constantly thinks about the dynamics of change.
 
 * Software delivers its value in production. The development project, testing, integration, and planning...everything before production is prelude.
+
+## Chapter 2. Case Study: The Exception That Grounded an Airline
+* It’s just fantasy to expect every single bug like this one to be driven out. Bugs will happen. They cannot be eliminated, so they must be survived instead.
+* How do we prevent bugs in one system from affecting everything else?
